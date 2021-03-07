@@ -1,8 +1,8 @@
-<?php namespace RainLab\User\Updates;
+<?php namespace Winter\User\Updates;
 
 use Schema;
-use October\Rain\Database\Updates\Migration;
-use RainLab\User\Models\User;
+use Winter\Storm\Database\Updates\Migration;
+use Winter\User\Models\User;
 
 class UsersAddLoginColumn extends Migration
 {

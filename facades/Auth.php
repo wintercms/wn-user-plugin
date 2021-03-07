@@ -1,9 +1,9 @@
-<?php namespace RainLab\User\Facades;
+<?php namespace Winter\User\Facades;
 
-use October\Rain\Support\Facade;
+use Winter\Storm\Support\Facade;
 
 /**
- * @see \RainLab\User\Classes\AuthManager
+ * @see \Winter\User\Classes\AuthManager
  */
 class Auth extends Facade
 {

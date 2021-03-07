@@ -1,4 +1,4 @@
-<?php namespace RainLab\User\Controllers;
+<?php namespace Winter\User\Controllers;
 
 use Auth;
 use Lang;
@@ -9,10 +9,10 @@ use BackendMenu;
 use BackendAuth;
 use Backend\Classes\Controller;
 use System\Classes\SettingsManager;
-use RainLab\User\Models\User;
-use RainLab\User\Models\UserGroup;
-use RainLab\User\Models\MailBlocker;
-use RainLab\User\Models\Settings as UserSettings;
+use Winter\User\Models\User;
+use Winter\User\Models\UserGroup;
+use Winter\User\Models\MailBlocker;
+use Winter\User\Models\Settings as UserSettings;
 
 class Users extends Controller
 {
@@ -42,7 +42,7 @@ class Users extends Controller
     /**
      * @var array Permissions required to view this page.
      */
-    public $requiredPermissions = ['rainlab.users.access_users'];
+    public $requiredPermissions = ['winter.users.access_users'];
 
     /**
      * @var string HTML body tag class
@@ -56,13 +56,13 @@ class Users extends Controller
     {
         parent::__construct();
 
-        BackendMenu::setContext('RainLab.User', 'user', 'users');
-        SettingsManager::setContext('RainLab.User', 'settings');
+        BackendMenu::setContext('Winter.User', 'user', 'users');
+        SettingsManager::setContext('Winter.User', 'settings');
     }
 
     public function index()
     {
-        $this->addJs('/plugins/rainlab/user/assets/js/bulk-actions.js');
+        $this->addJs('/plugins/winter/user/assets/js/bulk-actions.js');
 
         $this->asExtension('ListController')->index();
     }
@@ -143,7 +143,7 @@ class Users extends Controller
 
         $model->attemptActivation($model->activation_code);
 
-        Flash::success(Lang::get('rainlab.user::lang.users.activated_success'));
+        Flash::success(Lang::get('winter.user::lang.users.activated_success'));
 
         if ($redirect = $this->makeRedirect('update-close', $model)) {
             return $redirect;
@@ -159,7 +159,7 @@ class Users extends Controller
 
         $model->unban();
 
-        Flash::success(Lang::get('rainlab.user::lang.users.unbanned_success'));
+        Flash::success(Lang::get('winter.user::lang.users.unbanned_success'));
 
         if ($redirect = $this->makeRedirect('update-close', $model)) {
             return $redirect;
@@ -199,7 +199,7 @@ class Users extends Controller
             $model->groups()->add($group);
         }
 
-        Flash::success(Lang::get('rainlab.user::lang.users.convert_guest_success'));
+        Flash::success(Lang::get('winter.user::lang.users.convert_guest_success'));
 
         if ($redirect = $this->makeRedirect('update-close', $model)) {
             return $redirect;
@@ -211,7 +211,7 @@ class Users extends Controller
      */
     public function preview_onImpersonateUser($recordId)
     {
-        if (!$this->user->hasAccess('rainlab.users.impersonate_user')) {
+        if (!$this->user->hasAccess('winter.users.impersonate_user')) {
             return Response::make(Lang::get('backend::lang.page.access_denied.label'), 403);
         }
 
@@ -219,7 +219,7 @@ class Users extends Controller
 
         Auth::impersonate($model);
 
-        Flash::success(Lang::get('rainlab.user::lang.users.impersonate_success'));
+        Flash::success(Lang::get('winter.user::lang.users.impersonate_success'));
     }
 
     /**
@@ -231,7 +231,7 @@ class Users extends Controller
 
         $model->unsuspend();
 
-        Flash::success(Lang::get('rainlab.user::lang.users.unsuspend_success'));
+        Flash::success(Lang::get('winter.user::lang.users.unsuspend_success'));
 
         return Redirect::refresh();
     }
@@ -296,10 +296,10 @@ class Users extends Controller
                 }
             }
 
-            Flash::success(Lang::get('rainlab.user::lang.users.'.$bulkAction.'_selected_success'));
+            Flash::success(Lang::get('winter.user::lang.users.'.$bulkAction.'_selected_success'));
         }
         else {
-            Flash::error(Lang::get('rainlab.user::lang.users.'.$bulkAction.'_selected_empty'));
+            Flash::error(Lang::get('winter.user::lang.users.'.$bulkAction.'_selected_empty'));
         }
 
         return $this->listRefresh();

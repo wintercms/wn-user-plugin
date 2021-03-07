@@ -1,7 +1,7 @@
-<?php namespace RainLab\User\Updates;
+<?php namespace Winter\User\Updates;
 
 use Schema;
-use October\Rain\Database\Updates\Migration;
+use Winter\Storm\Database\Updates\Migration;
 
 class UsersAddSuperuserFlag extends Migration
 {

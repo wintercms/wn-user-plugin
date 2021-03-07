@@ -1,8 +1,8 @@
-<?php namespace RainLab\User\Tests\Unit\Facades;
+<?php namespace Winter\User\Tests\Unit\Facades;
 
 use Auth;
-use RainLab\User\Models\User;
-use RainLab\User\Tests\UserPluginTestCase;
+use Winter\User\Models\User;
+use Winter\User\Tests\UserPluginTestCase;
 
 class AuthFacadeTest extends UserPluginTestCase
 {
@@ -18,7 +18,7 @@ class AuthFacadeTest extends UserPluginTestCase
 
         // our one user should be returned
         $this->assertEquals(1, User::count());
-        $this->assertInstanceOf('RainLab\User\Models\User', $user);
+        $this->assertInstanceOf('Winter\User\Models\User', $user);
         
         // and that user should have the following data
         $this->assertFalse($user->is_activated);
@@ -50,7 +50,7 @@ class AuthFacadeTest extends UserPluginTestCase
 
         // our one guest should be returned
         $this->assertEquals(1, User::count());
-        $this->assertInstanceOf('RainLab\User\Models\User', $guest);
+        $this->assertInstanceOf('Winter\User\Models\User', $guest);
 
         // and that guest should have the following data
         $this->assertTrue($guest->is_guest);

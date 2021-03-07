@@ -1,7 +1,7 @@
-<?php namespace RainLab\User\Updates;
+<?php namespace Winter\User\Updates;
 
-use RainLab\User\Models\UserGroup;
-use October\Rain\Database\Updates\Seeder;
+use Winter\User\Models\UserGroup;
+use Winter\Storm\Database\Updates\Seeder;
 
 class SeedUserGroupsTable extends Seeder
 {

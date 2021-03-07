@@ -1,9 +1,9 @@
-<?php namespace RainLab\User\Tests;
+<?php namespace Winter\User\Tests;
 
 use App;
 use PluginTestCase;
 use Illuminate\Foundation\AliasLoader;
-use RainLab\User\Models\Settings;
+use Winter\User\Models\Settings;
 
 abstract class UserPluginTestCase extends PluginTestCase
 {
@@ -11,7 +11,7 @@ abstract class UserPluginTestCase extends PluginTestCase
      * @var array   Plugins to refresh between tests.
      */
     protected $refreshPlugins = [
-        'RainLab.User',
+        'Winter.User',
     ];
 
     /**
@@ -27,14 +27,14 @@ abstract class UserPluginTestCase extends PluginTestCase
         Settings::resetDefault();
 
         // log out after each test
-        \RainLab\User\Classes\AuthManager::instance()->logout();
+        \Winter\User\Classes\AuthManager::instance()->logout();
 
         // register the auth facade
         $alias = AliasLoader::getInstance();
-        $alias->alias('Auth', 'RainLab\User\Facades\Auth');
+        $alias->alias('Auth', 'Winter\User\Facades\Auth');
     
         App::singleton('user.auth', function () {
-            return \RainLab\User\Classes\AuthManager::instance();
+            return \Winter\User\Classes\AuthManager::instance();
         });
     }
 }

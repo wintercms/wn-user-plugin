@@ -1,4 +1,4 @@
-<?php namespace RainLab\User\Components;
+<?php namespace Winter\User\Components;
 
 use Lang;
 use Auth;
@@ -11,11 +11,11 @@ use Redirect;
 use Validator;
 use ValidationException;
 use ApplicationException;
-use October\Rain\Auth\AuthException;
+use Winter\Storm\Auth\AuthException;
 use Cms\Classes\Page;
 use Cms\Classes\ComponentBase;
-use RainLab\User\Models\User as UserModel;
-use RainLab\User\Models\Settings as UserSettings;
+use Winter\User\Models\User as UserModel;
+use Winter\User\Models\Settings as UserSettings;
 use Exception;
 
 /**
@@ -29,8 +29,8 @@ class Account extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name'        => /*Account*/'rainlab.user::lang.account.account',
-            'description' => /*User management form.*/'rainlab.user::lang.account.account_desc'
+            'name'        => /*Account*/'winter.user::lang.account.account',
+            'description' => /*User management form.*/'winter.user::lang.account.account_desc'
         ];
     }
 
@@ -38,26 +38,26 @@ class Account extends ComponentBase
     {
         return [
             'redirect' => [
-                'title'       => /*Redirect to*/'rainlab.user::lang.account.redirect_to',
-                'description' => /*Page name to redirect to after update, sign in or registration.*/'rainlab.user::lang.account.redirect_to_desc',
+                'title'       => /*Redirect to*/'winter.user::lang.account.redirect_to',
+                'description' => /*Page name to redirect to after update, sign in or registration.*/'winter.user::lang.account.redirect_to_desc',
                 'type'        => 'dropdown',
                 'default'     => ''
             ],
             'paramCode' => [
-                'title'       => /*Activation Code Param*/'rainlab.user::lang.account.code_param',
-                'description' => /*The page URL parameter used for the registration activation code*/ 'rainlab.user::lang.account.code_param_desc',
+                'title'       => /*Activation Code Param*/'winter.user::lang.account.code_param',
+                'description' => /*The page URL parameter used for the registration activation code*/ 'winter.user::lang.account.code_param_desc',
                 'type'        => 'string',
                 'default'     => 'code'
             ],
             'forceSecure' => [
-                'title'       => /*Force secure protocol*/'rainlab.user::lang.account.force_secure',
-                'description' => /*Always redirect the URL with the HTTPS schema.*/'rainlab.user::lang.account.force_secure_desc',
+                'title'       => /*Force secure protocol*/'winter.user::lang.account.force_secure',
+                'description' => /*Always redirect the URL with the HTTPS schema.*/'winter.user::lang.account.force_secure_desc',
                 'type'        => 'checkbox',
                 'default'     => 0
             ],
             'requirePassword' => [
-                'title'       => /*Confirm password on update*/'rainlab.user::lang.account.update_requires_password',
-                'description' => /*Require the current password of the user when changing their profile.*/'rainlab.user::lang.account.update_requires_password_comment',
+                'title'       => /*Confirm password on update*/'winter.user::lang.account.update_requires_password',
+                'description' => /*Require the current password of the user when changing their profile.*/'winter.user::lang.account.update_requires_password_comment',
                 'type'        => 'checkbox',
                 'default'     => 0
             ],
@@ -142,8 +142,8 @@ class Account extends ComponentBase
     public function loginAttributeLabel()
     {
         return Lang::get($this->loginAttribute() == UserSettings::LOGIN_EMAIL
-            ? /*Email*/'rainlab.user::lang.login.attribute_email'
-            : /*Username*/'rainlab.user::lang.login.attribute_username'
+            ? /*Email*/'winter.user::lang.login.attribute_email'
+            : /*Username*/'winter.user::lang.login.attribute_username'
         );
     }
 
@@ -235,12 +235,12 @@ class Account extends ComponentBase
                     break;
             }
 
-            Event::fire('rainlab.user.beforeAuthenticate', [$this, $credentials]);
+            Event::fire('winter.user.beforeAuthenticate', [$this, $credentials]);
 
             $user = Auth::authenticate($credentials, $remember);
             if ($user->isBanned()) {
                 Auth::logout();
-                throw new AuthException(/*Sorry, this user is currently not activated. Please contact us for further assistance.*/'rainlab.user::lang.account.banned');
+                throw new AuthException(/*Sorry, this user is currently not activated. Please contact us for further assistance.*/'winter.user::lang.account.banned');
             }
 
             /*
@@ -270,11 +270,11 @@ class Account extends ComponentBase
     {
         try {
             if (!$this->canRegister()) {
-                throw new ApplicationException(Lang::get(/*Registrations are currently disabled.*/'rainlab.user::lang.account.registration_disabled'));
+                throw new ApplicationException(Lang::get(/*Registrations are currently disabled.*/'winter.user::lang.account.registration_disabled'));
             }
 
             if ($this->isRegisterThrottled()) {
-                throw new ApplicationException(Lang::get(/*Registration is throttled. Please try again later.*/'rainlab.user::lang.account.registration_throttled'));
+                throw new ApplicationException(Lang::get(/*Registration is throttled. Please try again later.*/'winter.user::lang.account.registration_throttled'));
             }
 
             /*
@@ -307,7 +307,7 @@ class Account extends ComponentBase
             /*
              * Register user
              */
-            Event::fire('rainlab.user.beforeRegister', [&$data]);
+            Event::fire('winter.user.beforeRegister', [&$data]);
 
             $requireActivation = UserSettings::get('require_activation', true);
             $automaticActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_AUTO;
@@ -315,7 +315,7 @@ class Account extends ComponentBase
             $adminActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_ADMIN;
             $user = Auth::register($data, $automaticActivation);
 
-            Event::fire('rainlab.user.register', [$user, $data]);
+            Event::fire('winter.user.register', [$user, $data]);
 
             /*
              * Activation is by the user, send the email
@@ -323,15 +323,15 @@ class Account extends ComponentBase
             if ($userActivation) {
                 $this->sendActivationEmail($user);
 
-                Flash::success(Lang::get(/*An activation email has been sent to your email address.*/'rainlab.user::lang.account.activation_email_sent'));
+                Flash::success(Lang::get(/*An activation email has been sent to your email address.*/'winter.user::lang.account.activation_email_sent'));
             }
 
             /*
              * Activation is by the admin, show message
-             * For automatic email on account activation RainLab.Notify plugin is needed
+             * For automatic email on account activation Winter.Notify plugin is needed
              */
             if ($adminActivation) {
-                Flash::success(Lang::get(/*You have successfully registered. Your account is not yet active and must be approved by an administrator.*/'rainlab.user::lang.account.activation_by_admin'));
+                Flash::success(Lang::get(/*You have successfully registered. Your account is not yet active and must be approved by an administrator.*/'winter.user::lang.account.activation_by_admin'));
             }
 
             /*
@@ -363,7 +363,7 @@ class Account extends ComponentBase
         try {
             $code = post('code', $code);
 
-            $errorFields = ['code' => Lang::get(/*Invalid activation code supplied.*/'rainlab.user::lang.account.invalid_activation_code')];
+            $errorFields = ['code' => Lang::get(/*Invalid activation code supplied.*/'winter.user::lang.account.invalid_activation_code')];
 
             /*
              * Break up the code parts
@@ -387,7 +387,7 @@ class Account extends ComponentBase
                 throw new ValidationException($errorFields);
             }
 
-            Flash::success(Lang::get(/*Successfully activated your account.*/'rainlab.user::lang.account.success_activation'));
+            Flash::success(Lang::get(/*Successfully activated your account.*/'winter.user::lang.account.success_activation'));
 
             /*
              * Sign in the user
@@ -414,7 +414,7 @@ class Account extends ComponentBase
 
         if ($this->updateRequiresPassword()) {
             if (!$user->checkHashValue('password', $data['password_current'])) {
-                throw new ValidationException(['password_current' => Lang::get('rainlab.user::lang.account.invalid_current_pass')]);
+                throw new ValidationException(['password_current' => Lang::get('winter.user::lang.account.invalid_current_pass')]);
             }
         }
 
@@ -432,7 +432,7 @@ class Account extends ComponentBase
             Auth::login($user->reload(), true);
         }
 
-        Flash::success(post('flash', Lang::get(/*Settings successfully saved!*/'rainlab.user::lang.account.success_saved')));
+        Flash::success(post('flash', Lang::get(/*Settings successfully saved!*/'winter.user::lang.account.success_saved')));
 
         /*
          * Redirect
@@ -454,13 +454,13 @@ class Account extends ComponentBase
         }
 
         if (!$user->checkHashValue('password', post('password'))) {
-            throw new ValidationException(['password' => Lang::get('rainlab.user::lang.account.invalid_deactivation_pass')]);
+            throw new ValidationException(['password' => Lang::get('winter.user::lang.account.invalid_deactivation_pass')]);
         }
 
         Auth::logout();
         $user->delete();
 
-        Flash::success(post('flash', Lang::get(/*Successfully deactivated your account. Sorry to see you go!*/'rainlab.user::lang.account.success_deactivation')));
+        Flash::success(post('flash', Lang::get(/*Successfully deactivated your account. Sorry to see you go!*/'winter.user::lang.account.success_deactivation')));
 
         /*
          * Redirect
@@ -477,14 +477,14 @@ class Account extends ComponentBase
     {
         try {
             if (!$user = $this->user()) {
-                throw new ApplicationException(Lang::get(/*You must be logged in first!*/'rainlab.user::lang.account.login_first'));
+                throw new ApplicationException(Lang::get(/*You must be logged in first!*/'winter.user::lang.account.login_first'));
             }
 
             if ($user->is_activated) {
-                throw new ApplicationException(Lang::get(/*Your account is already activated!*/'rainlab.user::lang.account.already_active'));
+                throw new ApplicationException(Lang::get(/*Your account is already activated!*/'winter.user::lang.account.already_active'));
             }
 
-            Flash::success(Lang::get(/*An activation email has been sent to your email address.*/'rainlab.user::lang.account.activation_email_sent'));
+            Flash::success(Lang::get(/*An activation email has been sent to your email address.*/'winter.user::lang.account.activation_email_sent'));
 
             $this->sendActivationEmail($user);
 
@@ -547,7 +547,7 @@ class Account extends ComponentBase
             'code' => $code
         ];
 
-        Mail::send('rainlab.user::mail.activate', $data, function($message) use ($user) {
+        Mail::send('winter.user::mail.activate', $data, function($message) use ($user) {
             $message->to($user->email, $user->name);
         });
     }

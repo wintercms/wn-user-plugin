@@ -1,4 +1,4 @@
-<?php namespace RainLab\User;
+<?php namespace Winter\User;
 
 use App;
 use Auth;
@@ -7,9 +7,9 @@ use Backend;
 use System\Classes\PluginBase;
 use System\Classes\SettingsManager;
 use Illuminate\Foundation\AliasLoader;
-use RainLab\User\Classes\UserRedirector;
-use RainLab\User\Models\MailBlocker;
-use RainLab\Notify\Classes\Notifier;
+use Winter\User\Classes\UserRedirector;
+use Winter\User\Models\MailBlocker;
+use Winter\Notify\Classes\Notifier;
 
 class Plugin extends PluginBase
 {
@@ -21,21 +21,21 @@ class Plugin extends PluginBase
     public function pluginDetails()
     {
         return [
-            'name'        => 'rainlab.user::lang.plugin.name',
-            'description' => 'rainlab.user::lang.plugin.description',
+            'name'        => 'winter.user::lang.plugin.name',
+            'description' => 'winter.user::lang.plugin.description',
             'author'      => 'Alexey Bobkov, Samuel Georges',
             'icon'        => 'icon-user',
-            'homepage'    => 'https://github.com/rainlab/user-plugin'
+            'homepage'    => 'https://github.com/wintercms/wn-user-plugin'
         ];
     }
 
     public function register()
     {
         $alias = AliasLoader::getInstance();
-        $alias->alias('Auth', 'RainLab\User\Facades\Auth');
+        $alias->alias('Auth', 'Winter\User\Facades\Auth');
 
         App::singleton('user.auth', function () {
-            return \RainLab\User\Classes\AuthManager::instance();
+            return \Winter\User\Classes\AuthManager::instance();
         });
 
         App::singleton('redirect', function ($app) {
@@ -61,7 +61,7 @@ class Plugin extends PluginBase
         });
 
         /*
-         * Compatability with RainLab.Notify
+         * Compatability with Winter.Notify
          */
         $this->bindNotificationEvents();
     }
@@ -69,30 +69,30 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
         return [
-            \RainLab\User\Components\Session::class       => 'session',
-            \RainLab\User\Components\Account::class       => 'account',
-            \RainLab\User\Components\ResetPassword::class => 'resetPassword'
+            \Winter\User\Components\Session::class       => 'session',
+            \Winter\User\Components\Account::class       => 'account',
+            \Winter\User\Components\ResetPassword::class => 'resetPassword'
         ];
     }
 
     public function registerPermissions()
     {
         return [
-            'rainlab.users.access_users' => [
-                'tab'   => 'rainlab.user::lang.plugin.tab',
-                'label' => 'rainlab.user::lang.plugin.access_users'
+            'winter.users.access_users' => [
+                'tab'   => 'winter.user::lang.plugin.tab',
+                'label' => 'winter.user::lang.plugin.access_users'
             ],
-            'rainlab.users.access_groups' => [
-                'tab'   => 'rainlab.user::lang.plugin.tab',
-                'label' => 'rainlab.user::lang.plugin.access_groups'
+            'winter.users.access_groups' => [
+                'tab'   => 'winter.user::lang.plugin.tab',
+                'label' => 'winter.user::lang.plugin.access_groups'
             ],
-            'rainlab.users.access_settings' => [
-                'tab'   => 'rainlab.user::lang.plugin.tab',
-                'label' => 'rainlab.user::lang.plugin.access_settings'
+            'winter.users.access_settings' => [
+                'tab'   => 'winter.user::lang.plugin.tab',
+                'label' => 'winter.user::lang.plugin.access_settings'
             ],
-            'rainlab.users.impersonate_user' => [
-                'tab'   => 'rainlab.user::lang.plugin.tab',
-                'label' => 'rainlab.user::lang.plugin.impersonate_user'
+            'winter.users.impersonate_user' => [
+                'tab'   => 'winter.user::lang.plugin.tab',
+                'label' => 'winter.user::lang.plugin.impersonate_user'
             ],
         ];
     }
@@ -101,25 +101,25 @@ class Plugin extends PluginBase
     {
         return [
             'user' => [
-                'label'       => 'rainlab.user::lang.users.menu_label',
-                'url'         => Backend::url('rainlab/user/users'),
+                'label'       => 'winter.user::lang.users.menu_label',
+                'url'         => Backend::url('winter/user/users'),
                 'icon'        => 'icon-user',
-                'iconSvg'     => 'plugins/rainlab/user/assets/images/user-icon.svg',
-                'permissions' => ['rainlab.users.*'],
+                'iconSvg'     => 'plugins/winter/user/assets/images/user-icon.svg',
+                'permissions' => ['winter.users.*'],
                 'order'       => 500,
 
                 'sideMenu' => [
                     'users' => [
-                        'label' => 'rainlab.user::lang.users.menu_label',
+                        'label' => 'winter.user::lang.users.menu_label',
                         'icon'        => 'icon-user',
-                        'url'         => Backend::url('rainlab/user/users'),
-                        'permissions' => ['rainlab.users.access_users']
+                        'url'         => Backend::url('winter/user/users'),
+                        'permissions' => ['winter.users.access_users']
                     ],
                     'usergroups' => [
-                        'label'       => 'rainlab.user::lang.groups.menu_label',
+                        'label'       => 'winter.user::lang.groups.menu_label',
                         'icon'        => 'icon-users',
-                        'url'         => Backend::url('rainlab/user/usergroups'),
-                        'permissions' => ['rainlab.users.access_groups']
+                        'url'         => Backend::url('winter/user/usergroups'),
+                        'permissions' => ['winter.users.access_groups']
                     ]
                 ]
             ]
@@ -130,13 +130,13 @@ class Plugin extends PluginBase
     {
         return [
             'settings' => [
-                'label'       => 'rainlab.user::lang.settings.menu_label',
-                'description' => 'rainlab.user::lang.settings.menu_description',
+                'label'       => 'winter.user::lang.settings.menu_label',
+                'description' => 'winter.user::lang.settings.menu_description',
                 'category'    => SettingsManager::CATEGORY_USERS,
                 'icon'        => 'icon-cog',
-                'class'       => 'RainLab\User\Models\Settings',
+                'class'       => 'Winter\User\Models\Settings',
                 'order'       => 500,
-                'permissions' => ['rainlab.users.access_settings']
+                'permissions' => ['winter.users.access_settings']
             ]
         ];
     }
@@ -144,12 +144,12 @@ class Plugin extends PluginBase
     public function registerMailTemplates()
     {
         return [
-            'rainlab.user::mail.activate',
-            'rainlab.user::mail.welcome',
-            'rainlab.user::mail.restore',
-            'rainlab.user::mail.new_user',
-            'rainlab.user::mail.reactivate',
-            'rainlab.user::mail.invite',
+            'winter.user::mail.activate',
+            'winter.user::mail.welcome',
+            'winter.user::mail.restore',
+            'winter.user::mail.new_user',
+            'winter.user::mail.reactivate',
+            'winter.user::mail.invite',
         ];
     }
 
@@ -163,12 +163,12 @@ class Plugin extends PluginBase
                 ],
             ],
             'events' => [
-                \RainLab\User\NotifyRules\UserActivatedEvent::class,
-                \RainLab\User\NotifyRules\UserRegisteredEvent::class,
+                \Winter\User\NotifyRules\UserActivatedEvent::class,
+                \Winter\User\NotifyRules\UserRegisteredEvent::class,
             ],
             'actions' => [],
             'conditions' => [
-                \RainLab\User\NotifyRules\UserAttributeCondition::class
+                \Winter\User\NotifyRules\UserAttributeCondition::class
             ],
         ];
     }
@@ -180,8 +180,8 @@ class Plugin extends PluginBase
         }
 
         Notifier::bindEvents([
-            'rainlab.user.activate' => \RainLab\User\NotifyRules\UserActivatedEvent::class,
-            'rainlab.user.register' => \RainLab\User\NotifyRules\UserRegisteredEvent::class
+            'winter.user.activate' => \Winter\User\NotifyRules\UserActivatedEvent::class,
+            'winter.user.register' => \Winter\User\NotifyRules\UserRegisteredEvent::class
         ]);
 
         Notifier::instance()->registerCallback(function ($manager) {

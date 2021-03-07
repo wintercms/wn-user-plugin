@@ -1,8 +1,8 @@
 {
-    "name": "rainlab/user-plugin",
-    "type": "october-plugin",
-    "description": "User plugin for October CMS",
-    "homepage": "https://octobercms.com/plugin/rainlab-user",
+    "name": "winter/user-plugin",
+    "type": "winter-plugin",
+    "description": "User plugin for Winter CMS",
+    "homepage": "https://github.com/wintercms/wn-user-plugin",
     "keywords": ["october", "octobercms", "user"],
     "license": "MIT",
     "authors": [

@@ -1,9 +1,9 @@
-<?php namespace RainLab\User\Controllers;
+<?php namespace Winter\User\Controllers;
 
 use Flash;
 use BackendMenu;
 use Backend\Classes\Controller;
-use RainLab\User\Models\UserGroup;
+use Winter\User\Models\UserGroup;
 
 /**
  * User Groups Back-end Controller
@@ -36,7 +36,7 @@ class UserGroups extends Controller
     /**
      * @var array Permissions required to view this page.
      */
-    public $requiredPermissions = ['rainlab.users.access_groups'];
+    public $requiredPermissions = ['winter.users.access_groups'];
 
     /**
      * Constructor.
@@ -45,6 +45,6 @@ class UserGroups extends Controller
     {
         parent::__construct();
 
-        BackendMenu::setContext('RainLab.User', 'user', 'usergroups');
+        BackendMenu::setContext('Winter.User', 'user', 'usergroups');
     }
 }

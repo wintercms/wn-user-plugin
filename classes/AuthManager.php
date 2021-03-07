@@ -1,8 +1,8 @@
-<?php namespace RainLab\User\Classes;
+<?php namespace Winter\User\Classes;
 
-use October\Rain\Auth\Manager as RainAuthManager;
-use RainLab\User\Models\Settings as UserSettings;
-use RainLab\User\Models\UserGroup as UserGroupModel;
+use Winter\Storm\Auth\Manager as RainAuthManager;
+use Winter\User\Models\Settings as UserSettings;
+use Winter\User\Models\UserGroup as UserGroupModel;
 
 class AuthManager extends RainAuthManager
 {
@@ -10,11 +10,11 @@ class AuthManager extends RainAuthManager
 
     protected $sessionKey = 'user_auth';
 
-    protected $userModel = 'RainLab\User\Models\User';
+    protected $userModel = 'Winter\User\Models\User';
 
-    protected $groupModel = 'RainLab\User\Models\UserGroup';
+    protected $groupModel = 'Winter\User\Models\UserGroup';
 
-    protected $throttleModel = 'RainLab\User\Models\Throttle';
+    protected $throttleModel = 'Winter\User\Models\Throttle';
 
     public function init()
     {

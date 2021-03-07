@@ -1,6 +1,6 @@
-<?php namespace RainLab\User\Classes;
+<?php namespace Winter\User\Classes;
 
-use RainLab\Notify\Classes\EventBase;
+use Winter\Notify\Classes\EventBase;
 
 class UserEventBase extends EventBase
 {
@@ -8,7 +8,7 @@ class UserEventBase extends EventBase
      * @var array Local conditions supported by this event.
      */
     public $conditions = [
-        \RainLab\User\NotifyRules\UserAttributeCondition::class
+        \Winter\User\NotifyRules\UserAttributeCondition::class
     ];
 
     /**

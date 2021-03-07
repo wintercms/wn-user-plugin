@@ -1,4 +1,4 @@
-<?php namespace RainLab\User\Models;
+<?php namespace Winter\User\Models;
 
 use Model;
 
@@ -28,30 +28,30 @@ class Settings extends Model
 
     public function initSettingsData()
     {
-        $this->require_activation = config('rainlab.user::requireActivation', true);
-        $this->activate_mode = config('rainlab.user::activateMode', self::ACTIVATE_AUTO);
-        $this->use_throttle = config('rainlab.user::useThrottle', true);
-        $this->block_persistence = config('rainlab.user::blockPersistence', false);
-        $this->allow_registration = config('rainlab.user::allowRegistration', true);
-        $this->login_attribute = config('rainlab.user::loginAttribute', self::LOGIN_EMAIL);
-        $this->remember_login = config('rainlab.user::rememberLogin', self::REMEMBER_ALWAYS);
-        $this->use_register_throttle = config('rainlab.user::useRegisterThrottle', true);
+        $this->require_activation = config('winter.user::requireActivation', true);
+        $this->activate_mode = config('winter.user::activateMode', self::ACTIVATE_AUTO);
+        $this->use_throttle = config('winter.user::useThrottle', true);
+        $this->block_persistence = config('winter.user::blockPersistence', false);
+        $this->allow_registration = config('winter.user::allowRegistration', true);
+        $this->login_attribute = config('winter.user::loginAttribute', self::LOGIN_EMAIL);
+        $this->remember_login = config('winter.user::rememberLogin', self::REMEMBER_ALWAYS);
+        $this->use_register_throttle = config('winter.user::useRegisterThrottle', true);
     }
 
     public function getActivateModeOptions()
     {
         return [
             self::ACTIVATE_AUTO => [
-                'rainlab.user::lang.settings.activate_mode_auto',
-                'rainlab.user::lang.settings.activate_mode_auto_comment'
+                'winter.user::lang.settings.activate_mode_auto',
+                'winter.user::lang.settings.activate_mode_auto_comment'
             ],
             self::ACTIVATE_USER => [
-                'rainlab.user::lang.settings.activate_mode_user',
-                'rainlab.user::lang.settings.activate_mode_user_comment'
+                'winter.user::lang.settings.activate_mode_user',
+                'winter.user::lang.settings.activate_mode_user_comment'
             ],
             self::ACTIVATE_ADMIN => [
-                'rainlab.user::lang.settings.activate_mode_admin',
-                'rainlab.user::lang.settings.activate_mode_admin_comment'
+                'winter.user::lang.settings.activate_mode_admin',
+                'winter.user::lang.settings.activate_mode_admin_comment'
             ]
         ];
     }
@@ -68,8 +68,8 @@ class Settings extends Model
     public function getLoginAttributeOptions()
     {
         return [
-            self::LOGIN_EMAIL => ['rainlab.user::lang.login.attribute_email'],
-            self::LOGIN_USERNAME => ['rainlab.user::lang.login.attribute_username']
+            self::LOGIN_EMAIL => ['winter.user::lang.login.attribute_email'],
+            self::LOGIN_USERNAME => ['winter.user::lang.login.attribute_username']
         ];
     }
 
@@ -77,13 +77,13 @@ class Settings extends Model
     {
         return [
             self::REMEMBER_ALWAYS => [
-                'rainlab.user::lang.settings.remember_always',
+                'winter.user::lang.settings.remember_always',
             ],
             self::REMEMBER_NEVER => [
-                'rainlab.user::lang.settings.remember_never',
+                'winter.user::lang.settings.remember_never',
             ],
             self::REMEMBER_ASK => [
-                'rainlab.user::lang.settings.remember_ask',
+                'winter.user::lang.settings.remember_ask',
             ]
         ];
     }

@@ -1,4 +1,4 @@
-<?php namespace RainLab\User\Models;
+<?php namespace Winter\User\Models;
 
 use Str;
 use Auth;
@@ -6,13 +6,13 @@ use Mail;
 use Event;
 use Config;
 use Carbon\Carbon;
-use October\Rain\Auth\Models\User as UserBase;
-use RainLab\User\Models\Settings as UserSettings;
-use October\Rain\Auth\AuthException;
+use Winter\Storm\Auth\Models\User as UserBase;
+use Winter\User\Models\Settings as UserSettings;
+use Winter\Storm\Auth\AuthException;
 
 class User extends UserBase
 {
-    use \October\Rain\Database\Traits\SoftDelete;
+    use \Winter\Storm\Database\Traits\SoftDelete;
 
     /**
      * @var string The database table used by the model.
@@ -100,7 +100,7 @@ class User extends UserBase
             }
         }
 
-        Event::fire('rainlab.user.activate', [$this]);
+        Event::fire('winter.user.activate', [$this]);
 
         return true;
     }
@@ -209,7 +209,7 @@ class User extends UserBase
      */
     public static function getMinPasswordLength()
     {
-        return Config::get('rainlab.user::minPasswordLength', 8);
+        return Config::get('winter.user::minPasswordLength', 8);
     }
 
     //
@@ -303,17 +303,17 @@ class User extends UserBase
         if ($this->trashed()) {
             $this->restore();
 
-            Mail::sendTo($this, 'rainlab.user::mail.reactivate', [
+            Mail::sendTo($this, 'winter.user::mail.reactivate', [
                 'name' => $this->name
             ]);
 
-            Event::fire('rainlab.user.reactivate', [$this]);
+            Event::fire('winter.user.reactivate', [$this]);
         }
         else {
             parent::afterLogin();
         }
 
-        Event::fire('rainlab.user.login', [$this]);
+        Event::fire('winter.user.login', [$this]);
     }
 
     /**
@@ -323,7 +323,7 @@ class User extends UserBase
     public function afterDelete()
     {
         if ($this->isSoftDelete()) {
-            Event::fire('rainlab.user.deactivate', [$this]);
+            Event::fire('winter.user.deactivate', [$this]);
             return;
         }
 
@@ -493,7 +493,7 @@ class User extends UserBase
         /*
          * Extensibility
          */
-        $result = Event::fire('rainlab.user.getNotificationVars', [$this]);
+        $result = Event::fire('winter.user.getNotificationVars', [$this]);
         if ($result && is_array($result)) {
             $vars = call_user_func_array('array_merge', $result) + $vars;
         }
@@ -502,12 +502,12 @@ class User extends UserBase
     }
 
     /**
-     * Sends an invitation to the user using template "rainlab.user::mail.invite".
+     * Sends an invitation to the user using template "winter.user::mail.invite".
      * @return void
      */
     protected function sendInvitation()
     {
-        Mail::sendTo($this, 'rainlab.user::mail.invite', $this->getNotificationVars());
+        Mail::sendTo($this, 'winter.user::mail.invite', $this->getNotificationVars());
     }
 
     /**

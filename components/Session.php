@@ -1,4 +1,4 @@
-<?php namespace RainLab\User\Components;
+<?php namespace Winter\User\Components;
 
 use Lang;
 use Auth;
@@ -9,7 +9,7 @@ use Response;
 use Redirect;
 use Cms\Classes\Page;
 use Cms\Classes\ComponentBase;
-use RainLab\User\Models\UserGroup;
+use Winter\User\Models\UserGroup;
 use ValidationException;
 
 /**
@@ -27,8 +27,8 @@ class Session extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name'        => 'rainlab.user::lang.session.session',
-            'description' => 'rainlab.user::lang.session.session_desc'
+            'name'        => 'winter.user::lang.session.session',
+            'description' => 'winter.user::lang.session.session_desc'
         ];
     }
 
@@ -36,26 +36,26 @@ class Session extends ComponentBase
     {
         return [
             'security' => [
-                'title'       => 'rainlab.user::lang.session.security_title',
-                'description' => 'rainlab.user::lang.session.security_desc',
+                'title'       => 'winter.user::lang.session.security_title',
+                'description' => 'winter.user::lang.session.security_desc',
                 'type'        => 'dropdown',
                 'default'     => 'all',
                 'options'     => [
-                    'all'   => 'rainlab.user::lang.session.all',
-                    'user'  => 'rainlab.user::lang.session.users',
-                    'guest' => 'rainlab.user::lang.session.guests'
+                    'all'   => 'winter.user::lang.session.all',
+                    'user'  => 'winter.user::lang.session.users',
+                    'guest' => 'winter.user::lang.session.guests'
                 ]
             ],
             'allowedUserGroups' => [
-                'title'       => 'rainlab.user::lang.session.allowed_groups_title',
-                'description' => 'rainlab.user::lang.session.allowed_groups_description',
+                'title'       => 'winter.user::lang.session.allowed_groups_title',
+                'description' => 'winter.user::lang.session.allowed_groups_description',
                 'placeholder' => '*',
                 'type'        => 'set',
                 'default'     => []
             ],
             'redirect' => [
-                'title'       => 'rainlab.user::lang.session.redirect_title',
-                'description' => 'rainlab.user::lang.session.redirect_desc',
+                'title'       => 'winter.user::lang.session.redirect_title',
+                'description' => 'winter.user::lang.session.redirect_desc',
                 'type'        => 'dropdown',
                 'default'     => ''
             ]
@@ -102,7 +102,7 @@ class Session extends ComponentBase
     /**
      * Returns the logged in user, if available, and touches
      * the last seen timestamp.
-     * @return RainLab\User\Models\User
+     * @return Winter\User\Models\User
      */
     public function user()
     {
@@ -142,12 +142,12 @@ class Session extends ComponentBase
         Auth::logout();
 
         if ($user) {
-            Event::fire('rainlab.user.logout', [$user]);
+            Event::fire('winter.user.logout', [$user]);
         }
 
         $url = post('redirect', Request::fullUrl());
 
-        Flash::success(Lang::get('rainlab.user::lang.session.logout'));
+        Flash::success(Lang::get('winter.user::lang.session.logout'));
 
         return Redirect::to($url);
     }
@@ -166,7 +166,7 @@ class Session extends ComponentBase
 
         $url = post('redirect', Request::fullUrl());
 
-        Flash::success(Lang::get('rainlab.user::lang.session.stop_impersonate_success'));
+        Flash::success(Lang::get('winter.user::lang.session.stop_impersonate_success'));
 
         return Redirect::to($url);
     }

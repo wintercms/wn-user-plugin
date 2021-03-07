@@ -1,6 +1,6 @@
-<?php namespace RainLab\User\NotifyRules;
+<?php namespace Winter\User\NotifyRules;
 
-use RainLab\User\Classes\UserEventBase;
+use Winter\User\Classes\UserEventBase;
 
 class UserRegisteredEvent extends UserEventBase
 {
