@@ -25,7 +25,8 @@ class Plugin extends PluginBase
             'description' => 'winter.user::lang.plugin.description',
             'author'      => 'Alexey Bobkov, Samuel Georges',
             'icon'        => 'icon-user',
-            'homepage'    => 'https://github.com/wintercms/wn-user-plugin'
+            'homepage'    => 'https://github.com/wintercms/wn-user-plugin',
+            'replaces'    => 'RainLab.User'
         ];
     }
 
