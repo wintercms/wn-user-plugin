@@ -75,7 +75,7 @@
 "1.5.3": "Fixes a bug in the user update functionality if password is not changed. Added highlighting for banned users in user list."
 "1.5.4": "Multiple translation improvements. Added view events to extend user preview and user listing toolbars."
 "1.6.0":
-    - "Rebranded version of RainLab.User."
+    - "Rebrand to Winter.User"
     - v1.6.0/rename_tables.php
 
 
