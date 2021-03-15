@@ -1,7 +1,9 @@
 <?php
 
 # use reverse class_alias for external references to RainLab plugins
-class_alias(\RainLab\Notify\Classes\EventBase::class, \Winter\Notify\Classes\EventBase::class);
+if (!class_exists(Winter\Notify\Classes\EventBase::class)) {
+    class_alias(RainLab\Notify\Classes\EventBase::class, Winter\Notify\Classes\EventBase::class);
+}
 
 
 if (!class_exists(RainLab\User\Plugin::class)) {
