@@ -4,6 +4,7 @@
  * use the new Winter.User classes.
  */
 $aliases = [
+    'RainLab\Notify\Classes\EventBase'          => Winter\Notify\Classes\EventBase::class,
     Winter\User\Plugin::class                   => 'RainLab\User\Plugin',
     Winter\User\Classes\AuthManager::class      => 'RainLab\User\Classes\AuthManager',
     Winter\User\Classes\AuthMiddleware::class   => 'RainLab\User\Classes\AuthMiddleware',
