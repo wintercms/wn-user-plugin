@@ -9,6 +9,7 @@ use System\Classes\SettingsManager;
 use Illuminate\Foundation\AliasLoader;
 use Winter\User\Classes\UserRedirector;
 use Winter\User\Models\MailBlocker;
+use Winter\Notify\Classes\Notifier;
 
 class Plugin extends PluginBase
 {
@@ -155,7 +156,7 @@ class Plugin extends PluginBase
 
     public function registerNotificationRules()
     {
-        if (!class_exists('Winter\Notify\Classes\Notifier')) {
+        if (!class_exists(\Winter\Notify\Classes\Notifier::class)) {
             return [];
         }
 
@@ -167,8 +168,8 @@ class Plugin extends PluginBase
                 ],
             ],
             'events' => [
-                'Winter\User\NotifyRules\UserActivatedEvent',
-                'Winter\User\NotifyRules\UserRegisteredEvent',
+               \Winter\User\NotifyRules\UserActivatedEvent::class,
+               \Winter\User\NotifyRules\UserRegisteredEvent::class,
             ],
             'actions' => [],
             'conditions' => [
@@ -179,16 +180,16 @@ class Plugin extends PluginBase
 
     protected function bindNotificationEvents()
     {
-        if (!class_exists('Winter\Notify\Classes\Notifier')) {
+        if (!class_exists(\Winter\Notify\Classes\Notifier::class)) {
             return;
         }
 
-        \Winter\Notify\Classes\Notifier::bindEvents([
-            'winter.user.activate' => 'Winter\User\NotifyRules\UserActivatedEvent',
-            'winter.user.register' => 'Winter\User\NotifyRules\UserRegisteredEvent',
+        Notifier::bindEvents([
+            'winter.user.activate' => \Winter\User\NotifyRules\UserActivatedEvent::class,
+            'winter.user.register' => \Winter\User\NotifyRules\UserRegisteredEvent::class,
         ]);
 
-        \Winter\Notify\Classes\Notifier::instance()->registerCallback(function ($manager) {
+        Notifier::instance()->registerCallback(function ($manager) {
             $manager->registerGlobalParams([
                 'user' => Auth::getUser()
             ]);
