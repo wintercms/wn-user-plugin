@@ -10,7 +10,7 @@ class RenameTables extends Migration
         $from = 'rainlab_user_mail_blockers';
         $to = 'winter_user_mail_blockers';
 
-        if (Schema::hasTable($from)) {
+        if (Schema::hasTable($from) && !Schema::hasTable($to)) {
             Schema::rename($from, $to);
         }
     }
@@ -20,7 +20,7 @@ class RenameTables extends Migration
         $from = 'winter_user_mail_blockers';
         $to = 'rainlab_user_mail_blockers';
 
-        if (Schema::hasTable($from)) {
+        if (Schema::hasTable($from) && !Schema::hasTable($to)) {
             Schema::rename($from, $to);
         }
     }
