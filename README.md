@@ -1,13 +1,13 @@
 # Front-end user plugin
 
-[![Build Status](https://img.shields.io/github/workflow/status/rainlab/user-plugin/Tests)](https://github.com/wintercms/wn-user-plugin/actions)
+[![Build Status](https://img.shields.io/github/workflow/status/wintercms/wn-user-plugin/Tests)](https://github.com/wintercms/wn-user-plugin/actions)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/wintercms/wn-user-plugin/blob/master/LICENCE.md)
 
 Front-end user management for Winter CMS.
 
 ## Requirements
 
-This plugin requires the [Ajax Framework](https://octobercms.com/docs/cms/ajax) to be included in your layout/page in order to handle form requests.
+This plugin requires the [Ajax Framework](https://wintercms.com/docs/cms/ajax) to be included in your layout/page in order to handle form requests.
 
 ## Managing users
 
@@ -48,10 +48,6 @@ As a security precaution, you may restrict users from having sessions across mul
 #### Notifications
 
 When a user is first activated -- either by registration, email confirmation or administrator approval -- they are sent a welcome email. To disable the welcome email, select "Do not send a notification" from the **Welcome mail template** dropdown. The default message template used is `winter.user::mail.welcome` and you can customize this by selecting **Mail > Mail Templates** from the settings menu.
-
-## Extended features
-
-For extra functionality, consider also installing the [User Plus+ plugin](http://octobercms.com/plugin/rainlab-userplus) (`Winter.UserPlus`).
 
 ## Session component
 
@@ -153,7 +149,7 @@ By default, the User plugin requires a minimum password length of 8 characters f
 
 ### Flash messages
 
-This plugin makes use of Winter CMS's [`Flash API`](http://octobercms.com/docs/markup/tag-flash). In order to display the error messages, you need to place the following snippet in your layout or page.
+This plugin makes use of Winter CMS's [`Flash API`](https://wintercms.com/docs/markup/tag-flash). In order to display the error messages, you need to place the following snippet in your layout or page.
 
     {% flash %}
         <div class="alert alert-{{ type == 'error' ? 'danger' : type }}">{{ message }}</div>
