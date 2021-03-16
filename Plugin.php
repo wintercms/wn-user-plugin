@@ -9,7 +9,6 @@ use System\Classes\SettingsManager;
 use Illuminate\Foundation\AliasLoader;
 use Winter\User\Classes\UserRedirector;
 use Winter\User\Models\MailBlocker;
-use Winter\Notify\Classes\Notifier;
 
 class Plugin extends PluginBase
 {
@@ -156,6 +155,10 @@ class Plugin extends PluginBase
 
     public function registerNotificationRules()
     {
+        if (!class_exists('Winter\Notify\Classes\Notifier')) {
+            return [];
+        }
+
         return [
             'groups' => [
                 'user' => [
@@ -176,16 +179,16 @@ class Plugin extends PluginBase
 
     protected function bindNotificationEvents()
     {
-        if (!class_exists(Notifier::class)) {
+        if (!class_exists('Winter\Notify\Classes\Notifier')) {
             return;
         }
 
-        Notifier::bindEvents([
+        \Winter\Notify\Classes\Notifier::bindEvents([
             'winter.user.activate' => \Winter\User\NotifyRules\UserActivatedEvent::class,
             'winter.user.register' => \Winter\User\NotifyRules\UserRegisteredEvent::class
         ]);
 
-        Notifier::instance()->registerCallback(function ($manager) {
+        \Winter\Notify\Classes\Notifier::instance()->registerCallback(function ($manager) {
             $manager->registerGlobalParams([
                 'user' => Auth::getUser()
             ]);
