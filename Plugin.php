@@ -173,7 +173,7 @@ class Plugin extends PluginBase
             ],
             'actions' => [],
             'conditions' => [
-                'Winter\User\NotifyRules\UserAttributeCondition',
+                Winter\User\NotifyRules\UserAttributeCondition::class,
             ],
         ];
     }
