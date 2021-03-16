@@ -45,15 +45,17 @@ jobs:
         with:
           php-version: ${{ matrix.phpVersions }}
           extensions: ${{ env.phpExtensions }}
-          tools: composer:v1
+          tools: composer:v2
           coverage: none
 
       - name: Install Winter CMS
         run: |
           wget https://github.com/wintercms/winter/archive/${{ env.winterCmsRelease }}.zip
           unzip ${{ env.winterCmsRelease }}.zip
+          rm ${{ env.winterCmsRelease }}.zip
           shopt -s dotglob
           mv winter-${{ env.winterCmsRelease }}/* ./
+          rmdir winter-${{ env.winterCmsRelease }}
           shopt -u dotglob
           cp config/cms.php config/testing/cms.php
           mkdir -p plugins/winter
@@ -71,7 +73,7 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
 
       - name: Install Composer dependencies
-        run: composer install --no-interaction --no-progress --no-suggest
+        run: composer install --no-interaction --no-progress
 
       - name: Run linting
         run: ./vendor/bin/parallel-lint plugins/winter/user
