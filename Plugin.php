@@ -167,12 +167,12 @@ class Plugin extends PluginBase
                 ],
             ],
             'events' => [
-                \Winter\User\NotifyRules\UserActivatedEvent::class,
-                \Winter\User\NotifyRules\UserRegisteredEvent::class,
+                'Winter\User\NotifyRules\UserActivatedEvent',
+                'Winter\User\NotifyRules\UserRegisteredEvent',
             ],
             'actions' => [],
             'conditions' => [
-                \Winter\User\NotifyRules\UserAttributeCondition::class
+                'Winter\User\NotifyRules\UserAttributeCondition',
             ],
         ];
     }
@@ -184,8 +184,8 @@ class Plugin extends PluginBase
         }
 
         \Winter\Notify\Classes\Notifier::bindEvents([
-            'winter.user.activate' => \Winter\User\NotifyRules\UserActivatedEvent::class,
-            'winter.user.register' => \Winter\User\NotifyRules\UserRegisteredEvent::class
+            'winter.user.activate' => 'Winter\User\NotifyRules\UserActivatedEvent',
+            'winter.user.register' => 'Winter\User\NotifyRules\UserRegisteredEvent',
         ]);
 
         \Winter\Notify\Classes\Notifier::instance()->registerCallback(function ($manager) {
