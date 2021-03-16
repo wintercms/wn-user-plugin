@@ -11,7 +11,7 @@
     stopOnFailure="false"
 >
     <testsuites>
-        <testsuite name="rainlab.user">
+        <testsuite name="winter.user">
             <directory>./tests</directory>
         </testsuite>
     </testsuites>

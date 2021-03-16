@@ -1,13 +1,13 @@
 # Front-end user plugin
 
-[![Build Status](https://img.shields.io/github/workflow/status/rainlab/user-plugin/Tests)](https://github.com/rainlab/user-plugin/actions)
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/rainlab/user-plugin/blob/master/LICENCE.md)
+[![Build Status](https://img.shields.io/github/workflow/status/wintercms/wn-user-plugin/Tests)](https://github.com/wintercms/wn-user-plugin/actions)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/wintercms/wn-user-plugin/blob/master/LICENCE.md)
 
-Front-end user management for October CMS.
+Front-end user management for Winter CMS.
 
 ## Requirements
 
-This plugin requires the [Ajax Framework](https://octobercms.com/docs/cms/ajax) to be included in your layout/page in order to handle form requests.
+This plugin requires the [Ajax Framework](https://wintercms.com/docs/cms/ajax) to be included in your layout/page in order to handle form requests.
 
 ## Managing users
 
@@ -47,11 +47,7 @@ As a security precaution, you may restrict users from having sessions across mul
 
 #### Notifications
 
-When a user is first activated -- either by registration, email confirmation or administrator approval -- they are sent a welcome email. To disable the welcome email, select "Do not send a notification" from the **Welcome mail template** dropdown. The default message template used is `rainlab.user::mail.welcome` and you can customize this by selecting **Mail > Mail Templates** from the settings menu.
-
-## Extended features
-
-For extra functionality, consider also installing the [User Plus+ plugin](http://octobercms.com/plugin/rainlab-userplus) (`RainLab.UserPlus`).
+When a user is first activated -- either by registration, email confirmation or administrator approval -- they are sent a welcome email. To disable the welcome email, select "Do not send a notification" from the **Welcome mail template** dropdown. The default message template used is `winter.user::mail.welcome` and you can customize this by selecting **Mail > Mail Templates** from the settings menu.
 
 ## Session component
 
@@ -90,7 +86,7 @@ The `security` property can be user, guest or all. The `redirect` property refer
 
 Access to routes can be restricted by applying the `AuthMiddleware`.
 
-    Route::group(['middleware' => 'RainLab\User\Classes\AuthMiddleware'], function () {
+    Route::group(['middleware' => 'Winter\User\Classes\AuthMiddleware'], function () {
         // All routes here will require authentication
     });
 
@@ -153,7 +149,7 @@ By default, the User plugin requires a minimum password length of 8 characters f
 
 ### Flash messages
 
-This plugin makes use of October's [`Flash API`](http://octobercms.com/docs/markup/tag-flash). In order to display the error messages, you need to place the following snippet in your layout or page.
+This plugin makes use of Winter CMS's [`Flash API`](https://wintercms.com/docs/markup/tag-flash). In order to display the error messages, you need to place the following snippet in your layout or page.
 
     {% flash %}
         <div class="alert alert-{{ type == 'error' ? 'danger' : type }}">{{ message }}</div>
@@ -219,7 +215,7 @@ Here the local handler method will take priority over the **account** component'
 
 ## Auth facade
 
-There is an `Auth` facade you may use for common tasks, it primarily inherits the `October\Rain\Auth\Manager` class for functionality.
+There is an `Auth` facade you may use for common tasks, it primarily inherits the `Winter\Storm\Auth\Manager` class for functionality.
 
 You may use `Auth::register` to register an account:
 
@@ -290,7 +286,7 @@ When a user registers with the same email address using the `Auth::register` met
 
 > **Important**: If you are using guest accounts, it is important to disable sensitive functionality for user accounts that are not verified, since it may be possible for anyone to inherit a guest account.
 
-You may also convert a guest to a registered user with the `convertToRegistered` method. This will generate a random password and sends an invitation using the `rainlab.user::mail.invite` template.
+You may also convert a guest to a registered user with the `convertToRegistered` method. This will generate a random password and sends an invitation using the `winter.user::mail.invite` template.
 
     $user->convertToRegistered();
 
@@ -302,26 +298,26 @@ To disable the notification and password reset, pass the first argument as false
 
 This plugin will fire some global events that can be useful for interacting with other plugins.
 
-- **rainlab.user.beforeRegister**: Before the user's registration is processed. Passed the `$data` variable by reference to enable direct modifications to the `$data` provided to the `Auth::register()` method.
-- **rainlab.user.register**: The user has successfully registered. Passed the `$user` object and the submitted `$data` variable.
-- **rainlab.user.beforeAuthenticate**: Before the user is attempting to authenticate using the Account component.
-- **rainlab.user.login**: The user has successfully signed in.
-- **rainlab.user.logout**: The user has successfully signed out.
-- **rainlab.user.deactivate**: The user has opted-out of the site by deactivating their account. This should be used to disable any content the user may want removed.
-- **rainlab.user.reactivate**: The user has reactivated their own account by signing back in. This should revive the users content on the site.
-- **rainlab.user.getNotificationVars**: Fires when sending a user notification to enable passing more variables to the email templates. Passes the `$user` model the template will be for.
-- **rainlab.user.view.extendListToolbar**: Fires when the user listing page's toolbar is rendered.
-- **rainlab.user.view.extendPreviewToolbar**: Fires when the user preview page's toolbar is rendered.
+- **winter.user.beforeRegister**: Before the user's registration is processed. Passed the `$data` variable by reference to enable direct modifications to the `$data` provided to the `Auth::register()` method.
+- **winter.user.register**: The user has successfully registered. Passed the `$user` object and the submitted `$data` variable.
+- **winter.user.beforeAuthenticate**: Before the user is attempting to authenticate using the Account component.
+- **winter.user.login**: The user has successfully signed in.
+- **winter.user.logout**: The user has successfully signed out.
+- **winter.user.deactivate**: The user has opted-out of the site by deactivating their account. This should be used to disable any content the user may want removed.
+- **winter.user.reactivate**: The user has reactivated their own account by signing back in. This should revive the users content on the site.
+- **winter.user.getNotificationVars**: Fires when sending a user notification to enable passing more variables to the email templates. Passes the `$user` model the template will be for.
+- **winter.user.view.extendListToolbar**: Fires when the user listing page's toolbar is rendered.
+- **winter.user.view.extendPreviewToolbar**: Fires when the user preview page's toolbar is rendered.
 
 Here is an example of hooking an event:
 
-    Event::listen('rainlab.user.deactivate', function($user) {
+    Event::listen('winter.user.deactivate', function($user) {
         // Hide all posts by the user
     });
 
-A common requirement is to adapt another to a legacy authentication system. In the example below, the `WordPressLogin::check` method would check the user password using an alternative hashing method, and if successful, update to the new one used by October.
+A common requirement is to adapt another to a legacy authentication system. In the example below, the `WordPressLogin::check` method would check the user password using an alternative hashing method, and if successful, update to the new one used by Winter CMS.
 
-    Event::listen('rainlab.user.beforeAuthenticate', function($component, $credentials) {
+    Event::listen('winter.user.beforeAuthenticate', function($component, $credentials) {
         $login = array_get($credentials, 'login');
         $password = array_get($credentials, 'password');
 
@@ -335,7 +331,7 @@ A common requirement is to adapt another to a legacy authentication system. In t
         /*
          * The user is logging in with their old WordPress account
          * for the first time. Rehash their password using the new
-         * October system.
+         * Winter CMS system.
          */
         if (WordPressLogin::check($user->password, $password)) {
             $user->password = $user->password_confirmation = $password;

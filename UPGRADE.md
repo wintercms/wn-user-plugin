@@ -8,19 +8,19 @@
 
 The User plugin has been split apart in to smaller more manageable plugins. These fields are no longer provided by the User plugin: `company`, `phone`, `street_addr`, `city`, `zip`, `country`, `state`. This is a non-destructive upgrade so the columns will remain in the database untouched.
 
-Country and State models have been removed and can be replaced by installing the plugin **RainLab.Location**. The remaining profiles fields can be replaced by installing the plugin **RainLab.UserPlus**.
+Country and State models have been removed and can be replaced by installing the plugin **Winter.Location**. The remaining profiles fields can be replaced by installing the plugin **Winter.UserPlus**.
 
 In short, to retain the old functionaliy simply install the following plugins:
 
-- RainLab.Location
-- RainLab.UserPlus
+- Winter.Location
+- Winter.UserPlus
 
 <a name="upgrade-1.4"></a>
 ## Upgrading To 1.4
 
-The Notifications tab in User settings has been removed. This feature has been replaced by the [Notify plugin](https://octobercms.com/plugin/rainlab-notify). How to replace this feature:
+The Notifications tab in User settings has been removed. This feature has been replaced by the [Notify plugin](https://github.com/wintercms/wn-notify-plugin). How to replace this feature:
 
-1. Install the `RainLab.Notify` plugin
+1. Install the `Winter.Notify` plugin
 1. Navigate to Settings > Notification rules
 1. Click **New notification** rule
 1. Select User > **Activated**

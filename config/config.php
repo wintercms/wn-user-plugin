@@ -1,6 +1,6 @@
 <?php
 
-use RainLab\User\Models\Settings;
+use Winter\User\Models\Settings;
 
 return [
 

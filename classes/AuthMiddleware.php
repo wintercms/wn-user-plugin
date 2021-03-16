@@ -1,4 +1,4 @@
-<?php namespace RainLab\User\Classes;
+<?php namespace Winter\User\Classes;
 
 use Auth;
 use Closure;

@@ -1,14 +1,14 @@
-<?php namespace RainLab\User\Updates;
+<?php namespace Winter\User\Updates;
 
 use Schema;
-use October\Rain\Database\Updates\Migration;
+use Winter\Storm\Database\Updates\Migration;
 
 class CreateMailBlockersTable extends Migration
 {
 
     public function up()
     {
-        Schema::create('rainlab_user_mail_blockers', function($table)
+        Schema::create('winter_user_mail_blockers', function($table)
         {
             $table->engine = 'InnoDB';
             $table->increments('id');
@@ -21,7 +21,7 @@ class CreateMailBlockersTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('rainlab_user_mail_blockers');
+        Schema::dropIfExists('winter_user_mail_blockers');
     }
 
 }

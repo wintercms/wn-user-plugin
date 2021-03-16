@@ -1,6 +1,6 @@
-<?php namespace RainLab\User\Models;
+<?php namespace Winter\User\Models;
 
-use October\Rain\Auth\Models\Throttle as ThrottleBase;
+use Winter\Storm\Auth\Models\Throttle as ThrottleBase;
 
 class Throttle extends ThrottleBase
 {

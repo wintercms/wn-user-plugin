@@ -1,6 +1,6 @@
-<?php namespace RainLab\User\Updates;
+<?php namespace Winter\User\Updates;
 
-use October\Rain\Database\Updates\Migration;
+use Winter\Storm\Database\Updates\Migration;
 use DbDongle;
 
 class UpdateTimestampsNullable extends Migration
@@ -11,7 +11,7 @@ class UpdateTimestampsNullable extends Migration
 
         DbDongle::convertTimestamps('users');
         DbDongle::convertTimestamps('user_groups');
-        DbDongle::convertTimestamps('rainlab_user_mail_blockers');
+        DbDongle::convertTimestamps('winter_user_mail_blockers');
     }
 
     public function down()

@@ -5,46 +5,46 @@
 columns:
 
     id:
-        label: rainlab.user::lang.user.id
+        label: winter.user::lang.user.id
         invisible: true
 
     username:
-        label: rainlab.user::lang.user.username
+        label: winter.user::lang.user.username
         searchable: true
         invisible: true
 
     name:
-        label: rainlab.user::lang.user.name
+        label: winter.user::lang.user.name
         searchable: true
 
     surname:
-        label: rainlab.user::lang.user.surname
+        label: winter.user::lang.user.surname
         searchable: true
         invisible: true
 
     email:
-        label: rainlab.user::lang.user.email
+        label: winter.user::lang.user.email
         searchable: true
 
     created_at:
-        label: rainlab.user::lang.user.created_at
+        label: winter.user::lang.user.created_at
         type: timetense
 
     last_seen:
-        label: rainlab.user::lang.user.last_seen
+        label: winter.user::lang.user.last_seen
         type: timetense
 
     is_guest:
-        label: rainlab.user::lang.user.is_guest
+        label: winter.user::lang.user.is_guest
         type: switch
         invisible: true
 
     created_ip_address:
-        label: rainlab.user::lang.user.created_ip_address
+        label: winter.user::lang.user.created_ip_address
         searchable: true
         invisible: true
 
     last_ip_address:
-        label: rainlab.user::lang.user.last_ip_address
+        label: winter.user::lang.user.last_ip_address
         searchable: true
         invisible: true

@@ -1,11 +1,11 @@
-<?php namespace RainLab\User\NotifyRules;
+<?php namespace Winter\User\NotifyRules;
 
-use RainLab\Notify\Classes\ModelAttributesConditionBase;
+use Winter\Notify\Classes\ModelAttributesConditionBase;
 use ApplicationException;
 
 class UserAttributeCondition extends ModelAttributesConditionBase
 {
-    protected $modelClass = \RainLab\User\Models\User::class;
+    protected $modelClass = \Winter\User\Models\User::class;
 
     public function getGroupingTitle()
     {

@@ -1,6 +1,6 @@
-<?php namespace RainLab\User\Models;
+<?php namespace Winter\User\Models;
 
-use October\Rain\Auth\Models\Group as GroupBase;
+use Winter\Storm\Auth\Models\Group as GroupBase;
 use ApplicationException;
 
 /**
@@ -45,7 +45,7 @@ class UserGroup extends GroupBase
 
     /**
      * Returns the guest user group.
-     * @return RainLab\User\Models\UserGroup
+     * @return Winter\User\Models\UserGroup
      */
     public static function getGuestGroup()
     {
