@@ -7,12 +7,6 @@ use Winter\Storm\Support\ClassLoader;
  * use the new Winter.User classes.
  */
 $aliases = [
-    // Reverse alias to fix issue on PHP 7.2, see https://github.com/wintercms/wn-user-plugin/runs/2122181184
-    RainLab\Notify\Classes\EventBase::class     => Winter\Notify\Classes\EventBase::class,
-    RainLab\Notify\Classes\Notifier::class      => Winter\Notify\Classes\Notifier::class,
-    RainLab\Notify\Classes\ModelAttributesConditionBase::class => Winter\Notify\Classes\ModelAttributesConditionBase::class,
-
-    // Regular aliases
     Winter\User\Plugin::class                   => RainLab\User\Plugin::class,
     Winter\User\Classes\AuthManager::class      => RainLab\User\Classes\AuthManager::class,
     Winter\User\Classes\AuthMiddleware::class   => RainLab\User\Classes\AuthMiddleware::class,
