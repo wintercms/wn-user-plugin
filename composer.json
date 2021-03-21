@@ -28,11 +28,10 @@
         "source": "https://github.com/wintercms/wn-user-plugin"
     },
     "require": {
-        "php": ">=5.5.9",
+        "php": ">=7.2",
         "composer/installers": "~1.0"
     },
     "extra": {
         "installer-name": "user"
-    },
-    "minimum-stability": "dev"
+    }
 }
