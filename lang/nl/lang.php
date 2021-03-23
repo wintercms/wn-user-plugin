@@ -30,7 +30,7 @@ return [
         'convert_guest_manually' => 'Omzetten naar geregistreerde gebruiker',
         'convert_guest_success' => 'Gebruiker is omgezet naar een geregistreerd account',
         'impersonate_user' => 'Inloggen als',
-        'impersonate_confirm' => 'Als deze gebruiker inloggen? U kunt terugkeren naar uw oorspronkelijke staat door uit te loggen.',        
+        'impersonate_confirm' => 'Als deze gebruiker inloggen? U kunt terugkeren naar uw oorspronkelijke staat door uit te loggen.',
         'impersonate_success' => 'Je bent nu ingelogd als deze gebruiker',
         'delete_confirm' => 'Weet u zeker dat u deze gebruiker wilt verwijderen?',
         'unban_user' => 'Deblokkeer deze gebruiker',
