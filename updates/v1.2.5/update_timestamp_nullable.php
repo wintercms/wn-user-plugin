@@ -11,7 +11,7 @@ class UpdateTimestampsNullable extends Migration
 
         DbDongle::convertTimestamps('users');
         DbDongle::convertTimestamps('user_groups');
-        DbDongle::convertTimestamps('winter_user_mail_blockers');
+        DbDongle::convertTimestamps('rainlab_user_mail_blockers');
     }
 
     public function down()
