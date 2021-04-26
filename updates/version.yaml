@@ -76,4 +76,5 @@
 "1.5.4": "Multiple translation improvements. Added view events to extend user preview and user listing toolbars."
 "2.0.0":
     - "Rebrand to Winter.User"
+    - Update Russian language
     - v2.0.0/rename_tables.php
