@@ -529,7 +529,7 @@ class User extends UserBase
      * Only backend users with the `winter.users.impersonate_user` permission are allowed to impersonate
      * users.
      *
-     * @param static|false $impersonator The user attempting to impersonate this user, false when not available
+     * @param \Winter\Storm\Auth\Models\User|false $impersonator The user attempting to impersonate this user, false when not available
      * @return boolean
      */
     public function canBeImpersonated($impersonator = false)
