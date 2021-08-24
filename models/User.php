@@ -534,7 +534,7 @@ class User extends UserBase
      */
     public function canBeImpersonated($impersonator = false)
     {
-        $user = BackendAuth::user();
+        $user = BackendAuth::getUser();
         if (!$user || !$user->hasAccess('winter.users.impersonate_user')) {
             return false;
         }
