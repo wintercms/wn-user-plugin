@@ -26,7 +26,7 @@ class Plugin extends PluginBase
             'author'      => 'Alexey Bobkov, Samuel Georges',
             'icon'        => 'icon-user',
             'homepage'    => 'https://github.com/wintercms/wn-user-plugin',
-            'replaces'    => ['RainLab.User' => '<= 1.5.4'],
+            'replaces'    => ['RainLab.User' => '~1.6'],
         ];
     }
 

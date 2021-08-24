@@ -27,6 +27,9 @@
         "discord": "https://discord.gg/D5MFSPH6Ux",
         "source": "https://github.com/wintercms/wn-user-plugin"
     },
+    "replace": {
+        "rainlab/user-plugin": "~1.6"
+    },
     "require": {
         "php": ">=7.2",
         "composer/installers": "~1.0"
