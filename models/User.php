@@ -5,6 +5,7 @@ use Auth;
 use Mail;
 use Event;
 use Config;
+use BackendAuth;
 use Carbon\Carbon;
 use Winter\Storm\Auth\Models\User as UserBase;
 use Winter\User\Models\Settings as UserSettings;
@@ -55,7 +56,7 @@ class User extends UserBase
         'created_ip_address',
         'last_ip_address'
     ];
-    
+
     /**
      * Reset guarded fields, because we use $fillable instead.
      * @var array The attributes that aren't mass assignable.
@@ -517,5 +518,27 @@ class User extends UserBase
     protected function generatePassword()
     {
         $this->password = $this->password_confirmation = Str::random(static::getMinPasswordLength());
+    }
+
+    //
+    // Impersonation
+    //
+
+    /**
+     * Check if this user can be impersonated by the provided impersonator
+     * Only backend users with the `winter.users.impersonate_user` permission are allowed to impersonate
+     * users.
+     *
+     * @param \Winter\Storm\Auth\Models\User|false $impersonator The user attempting to impersonate this user, false when not available
+     * @return boolean
+     */
+    public function canBeImpersonated($impersonator = false)
+    {
+        $user = BackendAuth::getUser();
+        if (!$user || !$user->hasAccess('winter.users.impersonate_user')) {
+            return false;
+        }
+
+        return true;
     }
 }
