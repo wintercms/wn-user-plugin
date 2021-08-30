@@ -344,6 +344,8 @@ class User extends UserBase
     public function ban()
     {
         Auth::findThrottleByUserId($this->id)->ban();
+
+        Event::fire('winter.user.ban', [$this]);
     }
 
     /**
@@ -353,6 +355,8 @@ class User extends UserBase
     public function unban()
     {
         Auth::findThrottleByUserId($this->id)->unban();
+
+        Event::fire('winter.user.unban', [$this]);
     }
 
     /**
@@ -376,6 +380,8 @@ class User extends UserBase
     public function isSuspended()
     {
         return Auth::findThrottleByUserId($this->id)->checkSuspended();
+
+        Event::fire('winter.user.suspend', [$this]);
     }
 
     /**
@@ -385,6 +391,8 @@ class User extends UserBase
     public function unsuspend()
     {
         Auth::findThrottleByUserId($this->id)->unsuspend();
+
+        Event::fire('winter.user.unsuspend', [$this]);
     }
 
     //

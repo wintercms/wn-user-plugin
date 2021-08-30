@@ -2,7 +2,7 @@
 
 use Winter\User\Classes\UserEventBase;
 
-class UserActivatedEvent extends UserEventBase
+class UserReactivatedEvent extends UserEventBase
 {
     /**
      * Returns information about this event, including name and description.
@@ -10,8 +10,8 @@ class UserActivatedEvent extends UserEventBase
     public function eventDetails()
     {
         return [
-            'name'        => 'Activated',
-            'description' => 'A user was activated',
+            'name'        => 'Reactivated',
+            'description' => 'A user was reactivated',
             'group'       => 'user'
         ];
     }
