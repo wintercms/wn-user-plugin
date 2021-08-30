@@ -17,9 +17,17 @@ class UserEventBase extends EventBase
     public function defineParams()
     {
         return [
+            'id' => [
+                'title' => 'Id',
+                'label' => "User's id",
+            ],
             'name' => [
                 'title' => 'Name',
-                'label' => 'Name of the user',
+                'label' => "User's first name",
+            ],
+            'surname' => [
+                'title' => 'Surname',
+                'label' => "User's last name",
             ],
             'email' => [
                 'title' => 'Email',

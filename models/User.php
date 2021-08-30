@@ -492,7 +492,9 @@ class User extends UserBase
     public function getNotificationVars()
     {
         $vars = [
+            'id'     => $this->id,
             'name'     => $this->name,
+            'surname'     => $this->surname,
             'email'    => $this->email,
             'username' => $this->username,
             'login'    => $this->getLogin(),
