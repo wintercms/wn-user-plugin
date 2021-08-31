@@ -15,19 +15,4 @@ class Throttle extends ThrottleBase
     public $belongsTo = [
         'user' => User::class
     ];
-
-    /**
-     * Suspend the user associated with the throttle
-     * @return void
-     */
-    public function suspend()
-    {
-        if (!$this->is_suspended) {
-            $this->is_suspended = true;
-            $this->suspended_at = $this->freshTimestamp();
-            $this->save();
-        }
-
-        Event::fire('winter.user.suspend', [$this->user]);
-    }
 }
