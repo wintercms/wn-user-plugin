@@ -318,6 +318,15 @@ class User extends UserBase
     }
 
     /**
+     * Before login event
+     * @return void
+     */
+    public function onSuspend()
+    {
+        Event::fire('winter.user.suspend', [$this]);
+    }
+
+    /**
      * After delete event
      * @return void
      */
