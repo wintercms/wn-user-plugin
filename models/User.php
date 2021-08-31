@@ -380,8 +380,6 @@ class User extends UserBase
     public function isSuspended()
     {
         return Auth::findThrottleByUserId($this->id)->checkSuspended();
-
-        Event::fire('winter.user.suspend', [$this]);
     }
 
     /**
@@ -396,7 +394,7 @@ class User extends UserBase
     }
 
     //
-    // IP Recording and Throttle
+    // IP Recording and RegistrationThrottle
     //
 
     /**
@@ -492,9 +490,8 @@ class User extends UserBase
     public function getNotificationVars()
     {
         $vars = [
-            'id'     => $this->id,
             'name'     => $this->name,
-            'surname'     => $this->surname,
+            'surname'  => $this->surname,
             'email'    => $this->email,
             'username' => $this->username,
             'login'    => $this->getLogin(),

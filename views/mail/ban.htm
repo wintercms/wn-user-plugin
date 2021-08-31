@@ -1,0 +1,14 @@
+subject = "Account {{ name }} {{ surname }} has been banned."
+description = "An admin has banned an account"
+==
+The following user's account has been banned.
+
+This normally happens when an admin manually bans them:
+
+* Name: {{ name }}
+* Surname: {{ surname }}
+* Email: {{ email }}
+
+{% partial 'button' url=link type='positive' body %}
+Confirm account
+{% endpartial %}

@@ -146,11 +146,16 @@ class Plugin extends PluginBase
     {
         return [
             'winter.user::mail.activate',
+            'winter.user::mail.deactivate',
+            'winter.user::mail.reactivate',
             'winter.user::mail.welcome',
             'winter.user::mail.restore',
             'winter.user::mail.new_user',
-            'winter.user::mail.reactivate',
             'winter.user::mail.invite',
+            'winter.user::mail.ban',
+            'winter.user::mail.unban',
+            'winter.user::mail.suspend',
+            'winter.user::mail.unsuspend',
         ];
     }
 
