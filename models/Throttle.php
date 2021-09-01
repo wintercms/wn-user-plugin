@@ -8,7 +8,12 @@ class Throttle extends ThrottleBase
     /**
      * @var boolean Was the user already suspended at the beginning of the database update?
      */
-    private bool $wasSuspended = false;
+    private $wasSuspended = false;
+
+    /**
+     * @var boolean Was the user already banned at the beginning of the database update?
+     */
+    private $wasBanned = false;
 
     /**
      * @var string The database table used by the model.
@@ -23,11 +28,13 @@ class Throttle extends ThrottleBase
     ];
 
     /**
-     * Check if the user was already suspended before the table updates
+     * Check if the user was already suspended or banned before the table updates
      */
     public function beforeSave()
     {
         $this->wasSuspended = $this->user->isSuspended();
+
+        $this->wasBanned = $this->user->isBanned();
     }
 
     /**
@@ -42,6 +49,15 @@ class Throttle extends ThrottleBase
         } else if($this->wasSuspended && !$this->user->isSuspended()) {
             // User has become unsuspended. Fire appropriate event.
             Event::fire('winter.user.unsuspend', [$this->user]);
+        }
+
+        // Only fire banned events if the user banned state has changed
+        if (!$this->wasBanned && $this->user->isBanned()) {
+            // User has become banned. Fire appropriate event.
+            Event::fire('winter.user.ban', [$this->user]);
+        } else if($this->wasSuspended && !$this->user->isSuspended()) {
+            // User has become unbanned. Fire appropriate event.
+            Event::fire('winter.user.unban', [$this->user]);
         }
     }
 }

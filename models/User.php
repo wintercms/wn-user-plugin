@@ -344,8 +344,6 @@ class User extends UserBase
     public function ban()
     {
         Auth::findThrottleByUserId($this->id)->ban();
-
-        Event::fire('winter.user.ban', [$this]);
     }
 
     /**
@@ -355,8 +353,6 @@ class User extends UserBase
     public function unban()
     {
         Auth::findThrottleByUserId($this->id)->unban();
-
-        Event::fire('winter.user.unban', [$this]);
     }
 
     /**
