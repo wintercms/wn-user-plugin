@@ -30,7 +30,7 @@ class Throttle extends ThrottleBase
     /**
      * Check if the user was already suspended or banned before the table updates
      */
-    public function beforeSave()
+    public function beforeUpdate()
     {
         $this->wasSuspended = $this->user->isSuspended();
 
@@ -40,7 +40,7 @@ class Throttle extends ThrottleBase
     /**
      * Check if suspended state has changed and send suspend appropriate event if it has
      */
-    public function afterSave()
+    public function afterUpdate()
     {
         // Only fire suspend events if the user suspended state has changed
         if (!$this->wasSuspended && $this->user->isSuspended()) {
