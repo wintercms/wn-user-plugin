@@ -7,7 +7,7 @@ Front-end user management for Winter CMS.
 
 ## Requirements
 
-This plugin requires the [Ajax Framework](https://wintercms.com/docs/cms/ajax) to be included in your layout/page in order to handle form requests.
+This plugin requires the [Ajax Framework](https://wintercms.com/docs/ajax/introduction) to be included in your layout/page in order to handle form requests.
 
 ## Managing users
 
