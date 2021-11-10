@@ -219,5 +219,31 @@ return [
         'redirect_desc' => 'Page name to redirect if access is denied.',
         'logout' => 'You have been successfully logged out!',
         'stop_impersonate_success' => 'You are no longer impersonating a user.',
-    ]
+    ],
+    'reportwidgets' => [
+        'statistics' => [
+            'properties' => [
+                'widget_title' => 'Widget title',
+                'default_title' => 'Plugin User - Statistics',
+                'title_validationMessage' => 'The Widget Title is required.',
+            ],
+            'registration' => 'Registration',
+            'activated' => 'Activated',
+            'ban' => 'Ban',
+            'today' => 'today',
+            'yesterday' => 'yesterday',
+            'month' => 'month',
+            'year' => 'year',
+            'registrations' => 'Registrations',
+            'tooltip_registr_today' => 'Users registered today',
+            'tooltip_registr_yesterday' => 'Users registered for yesterday',
+            'tooltip_registr_month' => 'Users registered in last month',
+            'tooltip_registr_year' => 'Users registered in last year',
+            'activity' => 'Activity',
+            'tooltip_activity_today' => 'Active users today',
+            'tooltip_activity_yesterday' => 'Active users for yesterday',
+            'tooltip_activity_month' => 'Active users in last month',
+            'tooltip_activity_year' => 'Active users per year',
+        ],
+    ],
 ];

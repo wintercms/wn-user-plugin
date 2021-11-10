@@ -220,4 +220,14 @@ class Plugin extends PluginBase
             ]);
         });
     }
+
+    public function registerReportWidgets()
+    {
+        return [
+            'Winter\User\ReportWidgets\Statistics' => [
+                'label'   => 'winter.user::lang.reportwidgets.statistics.properties.default_title',
+                'context' => 'dashboard'
+            ],
+        ];
+    }
 }
