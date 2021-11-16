@@ -222,11 +222,7 @@ return [
     ],
     'reportwidgets' => [
         'statistics' => [
-            'properties' => [
-                'widget_title' => 'Заголовок виджета',
-                'default_title' => 'Статистика плагина USER',
-                'title_validationMessage' => 'Требуется заголовок виджета.',
-            ],
+            'default_title' => 'Статистика плагина USER',
             'registration' => 'Регистраций',
             'activated' => 'Активировано',
             'ban' => 'Бан',

@@ -11,11 +11,11 @@ class Statistics extends ReportWidgetBase
     {
         return [
             'title' => [
-                'title'             => 'winter.user::lang.reportwidgets.statistics.properties.widget_title',
-                'default'           => 'winter.user::lang.reportwidgets.statistics.properties.default_title',
+                'title'             => 'backend::lang.dashboard.widget_title_label',
+                'default'           => 'winter.user::lang.reportwidgets.statistics.default_title',
                 'type'              => 'string',
                 'validationPattern' => '^.+$',
-                'validationMessage' => 'winter.user::lang.reportwidgets.statistics.properties.title_validationMessage'
+                'validationMessage' => 'backend::lang.dashboard.widget_title_error'
             ],
         ];
     }
