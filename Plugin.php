@@ -225,7 +225,7 @@ class Plugin extends PluginBase
     {
         return [
             'Winter\User\ReportWidgets\Statistics' => [
-                'label'   => 'winter.user::lang.reportwidgets.statistics.properties.default_title',
+                'label'   => 'winter.user::lang.reportwidgets.statistics.default_title',
                 'context' => 'dashboard'
             ],
         ];
