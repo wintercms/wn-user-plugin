@@ -1,6 +1,7 @@
 <?php namespace Winter\User\ReportWidgets;
 
 use Backend\Classes\ReportWidgetBase;
+use Exception;
 use Winter\User\Models\User;
 use Db;
 use Carbon\Carbon;
@@ -22,6 +23,17 @@ class Statistics extends ReportWidgetBase
 
     public function render()
     {
+        try {
+            $this->prepareVars();
+        } catch (Exception $ex) {
+            $this->vars['error'] = $ex->getMessage();
+        }
+
+        return $this->makePartial('widget');
+    }
+
+    public function prepareVars()
+    {
         $current_data = Carbon::now();
         $yesterday = Carbon::now()->yesterday();
         $sub_month = Carbon::now()->subMonth();
@@ -42,9 +54,5 @@ class Statistics extends ReportWidgetBase
             'active_month' => User::whereDate('last_seen', '>', $sub_month)->count(),
             'active_year' => User::whereDate('last_seen', '>', $sub_year)->count(),
         ];
-        
-        $this->vars['widget_title'] = $this->property('title');
-
-        return $this->makePartial('widget');
     }
 }

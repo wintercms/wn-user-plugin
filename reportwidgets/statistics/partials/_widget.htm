@@ -1,80 +1,84 @@
 <div class="report-widget">
-    <h3><?= $widget_title ?></h3>
+    <h3><?= e($this->property('title')) ?></h3>
     
-    <div class="user-statistics-widget">
-        <div class="user-statistics-item users-statistics-item-total">
-            <span class="user-statistics-top"><i class="icon-user-o"></i> <?= Lang::get('winter.user::lang.reportwidgets.statistics.registration') ?></span>
-            <span class="user-statistics-counter"><?= $stats_users['count'] ?></span>
+    <?php if (!isset($error)): ?>
+        <div class="user-statistics-widget">
+            <div class="user-statistics-item users-statistics-item-total">
+                <span class="user-statistics-top"><i class="icon-user-o"></i> <?= Lang::get('winter.user::lang.reportwidgets.statistics.registration') ?></span>
+                <span class="user-statistics-counter"><?= $stats_users['count'] ?></span>
+            </div>
+            <div class="user-statistics-item users-statistics-item-activated">
+                <span class="user-statistics-top"><i class="icon-check-square-o"></i> <?= Lang::get('winter.user::lang.reportwidgets.statistics.activated') ?></span>
+                <span class="user-statistics-counter"><?= $stats_users['activated_count'] ?></span>
+            </div>
+            <div class="user-statistics-item users-statistics-item-banned">
+                <span class="user-statistics-top"><i class="icon-minus-circle"></i> <?= Lang::get('winter.user::lang.reportwidgets.statistics.ban') ?></span>
+                <span class="user-statistics-counter"><?= $stats_users['banned_count'] ?></span>
+            </div>
         </div>
-        <div class="user-statistics-item users-statistics-item-activated">
-            <span class="user-statistics-top"><i class="icon-check-square-o"></i> <?= Lang::get('winter.user::lang.reportwidgets.statistics.activated') ?></span>
-            <span class="user-statistics-counter"><?= $stats_users['activated_count'] ?></span>
-        </div>
-        <div class="user-statistics-item users-statistics-item-banned">
-            <span class="user-statistics-top"><i class="icon-minus-circle"></i> <?= Lang::get('winter.user::lang.reportwidgets.statistics.ban') ?></span>
-            <span class="user-statistics-counter"><?= $stats_users['banned_count'] ?></span>
-        </div>
-    </div>
 
-    <table class="table table-striped table-user-statistics">
-        <thead>
-            <tr>
-                <th></th>
-                <th><?= Lang::get('winter.user::lang.reportwidgets.statistics.today') ?></th>
-                <th><?= Lang::get('winter.user::lang.reportwidgets.statistics.yesterday') ?></th>
-                <th><?= Lang::get('winter.user::lang.reportwidgets.statistics.month') ?></th>
-                <th><?= Lang::get('winter.user::lang.reportwidgets.statistics.year') ?></th>
-            </tr>
-        </thead>
-        <tbody class="control-status-list">
-            <tr>
-                <td><?= Lang::get('winter.user::lang.reportwidgets.statistics.registrations') ?></td>
-                <td>
-                    <span data-toggle="tooltip" data-placement="top" title="<?= Lang::get('winter.user::lang.reportwidgets.statistics.tooltip_registr_today') ?>">
-                        <?= $stats_users['registr_day'] ?>
-                    </span>
-                </td>
-                <td>
-                    <span data-toggle="tooltip" data-placement="top" title="<?= Lang::get('winter.user::lang.reportwidgets.statistics.tooltip_registr_yesterday') ?>">
-                        <?= $stats_users['registr_yesterday'] ?>
-                    </span>
-                </td>
-                <td>
-                    <span data-toggle="tooltip" data-placement="top" title="<?= Lang::get('winter.user::lang.reportwidgets.statistics.tooltip_registr_month') ?>">
-                        <?= $stats_users['registr_month'] ?>
-                    </span>
-                </td>
-                <td>
-                    <span data-toggle="tooltip" data-placement="top" title="<?= Lang::get('winter.user::lang.reportwidgets.statistics.tooltip_registr_year') ?>">
-                        <?= $stats_users['registr_year'] ?>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td><?= Lang::get('winter.user::lang.reportwidgets.statistics.activity') ?></td>
-                <td>
-                    <span data-toggle="tooltip" data-placement="top" title="<?= Lang::get('winter.user::lang.reportwidgets.statistics.tooltip_activity_today') ?>">
-                        <?= $stats_users['active_day'] ?>
-                    </span>
-                </td>
-                <td>
-                    <span data-toggle="tooltip" data-placement="top" title="<?= Lang::get('winter.user::lang.reportwidgets.statistics.tooltip_activity_yesterday') ?>">
-                        <?= $stats_users['active_yesterday'] ?>
-                    </span>
-                </td>
-                <td>
-                    <span data-toggle="tooltip" data-placement="top" title="<?= Lang::get('winter.user::lang.reportwidgets.statistics.tooltip_activity_month') ?>">
-                        <?= $stats_users['active_month'] ?>
-                    </span>
-                </td>
-                <td>
-                    <span data-toggle="tooltip" data-placement="top" title="<?= Lang::get('winter.user::lang.reportwidgets.statistics.tooltip_activity_year') ?>">
-                        <?= $stats_users['active_year'] ?>
-                    </span>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+        <table class="table table-striped table-user-statistics">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th><?= Lang::get('winter.user::lang.reportwidgets.statistics.today') ?></th>
+                    <th><?= Lang::get('winter.user::lang.reportwidgets.statistics.yesterday') ?></th>
+                    <th><?= Lang::get('winter.user::lang.reportwidgets.statistics.month') ?></th>
+                    <th><?= Lang::get('winter.user::lang.reportwidgets.statistics.year') ?></th>
+                </tr>
+            </thead>
+            <tbody class="control-status-list">
+                <tr>
+                    <td><?= Lang::get('winter.user::lang.reportwidgets.statistics.registrations') ?></td>
+                    <td>
+                        <span data-toggle="tooltip" data-placement="top" title="<?= Lang::get('winter.user::lang.reportwidgets.statistics.tooltip_registr_today') ?>">
+                            <?= $stats_users['registr_day'] ?>
+                        </span>
+                    </td>
+                    <td>
+                        <span data-toggle="tooltip" data-placement="top" title="<?= Lang::get('winter.user::lang.reportwidgets.statistics.tooltip_registr_yesterday') ?>">
+                            <?= $stats_users['registr_yesterday'] ?>
+                        </span>
+                    </td>
+                    <td>
+                        <span data-toggle="tooltip" data-placement="top" title="<?= Lang::get('winter.user::lang.reportwidgets.statistics.tooltip_registr_month') ?>">
+                            <?= $stats_users['registr_month'] ?>
+                        </span>
+                    </td>
+                    <td>
+                        <span data-toggle="tooltip" data-placement="top" title="<?= Lang::get('winter.user::lang.reportwidgets.statistics.tooltip_registr_year') ?>">
+                            <?= $stats_users['registr_year'] ?>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><?= Lang::get('winter.user::lang.reportwidgets.statistics.activity') ?></td>
+                    <td>
+                        <span data-toggle="tooltip" data-placement="top" title="<?= Lang::get('winter.user::lang.reportwidgets.statistics.tooltip_activity_today') ?>">
+                            <?= $stats_users['active_day'] ?>
+                        </span>
+                    </td>
+                    <td>
+                        <span data-toggle="tooltip" data-placement="top" title="<?= Lang::get('winter.user::lang.reportwidgets.statistics.tooltip_activity_yesterday') ?>">
+                            <?= $stats_users['active_yesterday'] ?>
+                        </span>
+                    </td>
+                    <td>
+                        <span data-toggle="tooltip" data-placement="top" title="<?= Lang::get('winter.user::lang.reportwidgets.statistics.tooltip_activity_month') ?>">
+                            <?= $stats_users['active_month'] ?>
+                        </span>
+                    </td>
+                    <td>
+                        <span data-toggle="tooltip" data-placement="top" title="<?= Lang::get('winter.user::lang.reportwidgets.statistics.tooltip_activity_year') ?>">
+                            <?= $stats_users['active_year'] ?>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    <?php else: ?>
+        <p class="flash-message static warning"><?= e($error) ?></p>
+    <?php endif ?>
 </div>
 
 <style>
