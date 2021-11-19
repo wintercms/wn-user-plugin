@@ -222,7 +222,7 @@ return [
     ],
     'reportwidgets' => [
         'statistics' => [
-            'default_title' => 'Статистика плагина USER',
+            'default_title' => 'Статистика пользователи',
             'registration' => 'Регистраций',
             'activated' => 'Активировано',
             'ban' => 'Бан',
