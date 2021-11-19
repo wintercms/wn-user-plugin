@@ -222,7 +222,7 @@ return [
     ],
     'reportwidgets' => [
         'statistics' => [
-            'default_title' => 'Plugin User - Statistics',
+            'default_title' => 'User Statistics',
             'registration' => 'Registration',
             'activated' => 'Activated',
             'ban' => 'Ban',
