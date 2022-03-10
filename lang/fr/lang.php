@@ -90,6 +90,11 @@ return [
         'block_persistence_comment' => 'Lorsque activée, les utilisateurs ne peuvent pas se connecter à plusieurs appareils en même temps.',
         'login_attribute' => 'Attribut pour l’identifiant',
         'login_attribute_comment' => 'Choisissez l’attribut utilisateur à utiliser comme identifiant.',
+        'remember_login' => 'Se souvenir du mode de connexion',
+        'remember_login_comment' => 'Selectionner si la session de l\'utilisateur doit être persistente.',
+        'remember_always' => 'Toujours',
+        'remember_never' => 'Jamais',
+        'remember_ask' => 'Demander  à l\'utilisateur lors de la connexion',
     ],
     'user' => [
         'label' => 'Utilisateur',
