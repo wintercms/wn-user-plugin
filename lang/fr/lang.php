@@ -94,7 +94,7 @@ return [
         'remember_login_comment' => "Selectionner si la session de l'utilisateur doit être persistente." ,
         'remember_always' => 'Toujours',
         'remember_never' => 'Jamais',
-        'remember_ask' => 'Demander à l\'utilisateur lors de la connexion',
+        'remember_ask' => "Demander à l'utilisateur lors de la connexion",
     ],
     'user' => [
         'label' => 'Utilisateur',
