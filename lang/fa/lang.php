@@ -63,7 +63,6 @@ return [
         'unban_selected_confirm' => 'کاربران انتخاب شده رفع انسداد شوند؟',
         'unban_selected_empty' => 'کاربری برای رفع انسداد انتخاب نشده است',
         'unban_selected_success' => 'کاربران انتخاب شده با موفقیت رفع انسداد شدند',
-        'unsuspend' => 'Unsuspend',
         'unsuspend_success' => 'کاربر لغو تعلیق شده است',
         'unsuspend_confirm' => 'این کاربر لغو تعلیق شود؟'
     ],
