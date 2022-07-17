@@ -1,7 +1,7 @@
 <?php namespace Winter\User\Tests;
 
 use App;
-use PluginTestCase;
+use System\Tests\Bootstrap\PluginTestCase;
 use Illuminate\Foundation\AliasLoader;
 use Winter\User\Models\Settings;
 
