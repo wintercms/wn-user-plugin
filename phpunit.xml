@@ -2,7 +2,6 @@
 <phpunit 
     backupGlobals="false"
     backupStaticAttributes="false"
-    bootstrap="../../../tests/bootstrap.php"
     colors="true"
     convertErrorsToExceptions="true"
     convertNoticesToExceptions="true"
@@ -15,11 +14,6 @@
             <directory>./tests</directory>
         </testsuite>
     </testsuites>
-    <php>
-        <env name="APP_ENV" value="testing"/>
-        <env name="CACHE_DRIVER" value="array"/>
-        <env name="SESSION_DRIVER" value="array"/>
-    </php>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./classes</directory>
