@@ -63,8 +63,8 @@ jobs:
       - name: Install Winter CMS
         run: |
           wget https://github.com/wintercms/winter/archive/${{ matrix.winterRelease }}.zip
-          unzip ${{ matrix.winterReleaseDir }}.zip
-          rm ${{ matrix.winterReleaseDir }}.zip
+          unzip ${{ matrix.winterRelease }}.zip
+          rm ${{ matrix.winterRelease }}.zip
           shopt -s dotglob
           mv winter-${{ matrix.winterReleaseDir }}/* ./
           rmdir winter-${{ matrix.winterReleaseDir }}
