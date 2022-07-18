@@ -1,11 +1,20 @@
 <?php namespace Winter\User\Tests;
 
 use App;
-use PluginTestCase;
 use Illuminate\Foundation\AliasLoader;
 use Winter\User\Models\Settings;
 
-abstract class UserPluginTestCase extends PluginTestCase
+if (class_exists('System\Tests\Bootstrap\PluginTestCase')) {
+    class BaseTestCase extends \System\Tests\Bootstrap\PluginTestCase
+    {
+    }
+} else {
+    class BaseTestCase extends \PluginTestCase
+    {
+    }
+}
+
+abstract class UserPluginTestCase extends BaseTestCase
 {
     /**
      * @var array   Plugins to refresh between tests.
