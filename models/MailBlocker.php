@@ -260,7 +260,7 @@ class MailBlocker extends Model
             }
         }
 
-        $message->setTo($recipients);
+        $message->to($recipients);
         return count($recipients) ? null : false;
     }
 }
