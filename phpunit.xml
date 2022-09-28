@@ -11,8 +11,8 @@
     xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
 >
     <testsuites>
-        <testsuite name="Winter.User">
-            <directory>./tests</directory>
+        <testsuite name="Winter.User Plugin Test Suite">
+          <directory>./tests/unit</directory>
         </testsuite>
     </testsuites>
     <coverage processUncoveredFiles="true">
