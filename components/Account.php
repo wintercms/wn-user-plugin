@@ -445,8 +445,8 @@ class Account extends ComponentBase
     }
 
     /**
-     * Remove user's avatar
-     * Supports deferred bindings using _session_key field
+     * Remove the user's avatar
+     * Will also unset avatars set via deferred binding if the  _session_key field is present in the POST data
      */
     public function onRemoveAvatar()
     {
@@ -458,9 +458,8 @@ class Account extends ComponentBase
 
         $this->prepareVars();
 
-        // Because avatar unbinding may be deferred,
-        // the avatar relationship may be reloaded using User::getAvatarThumb
-        // Set avatar relation to null
+        // Force the avatar relationship to be removed even if User::getAvatarThumb()
+        // has stale references
         $this->page['user']->setRelation('avatar', null);
     }
 
