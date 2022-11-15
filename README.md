@@ -7,7 +7,7 @@ Front-end user management for Winter CMS.
 
 ## Requirements
 
-This plugin requires the [Ajax Framework](https://wintercms.com/docs/cms/ajax) to be included in your layout/page in order to handle form requests.
+This plugin requires the [Ajax Framework](https://wintercms.com/docs/ajax/introduction) to be included in your layout/page in order to handle form requests.
 
 ## Managing users
 
@@ -303,7 +303,7 @@ This plugin will fire some global events that can be useful for interacting with
 - **winter.user.beforeAuthenticate**: Before the user is attempting to authenticate using the Account component.
 - **winter.user.login**: The user has successfully signed in.
 - **winter.user.logout**: The user has successfully signed out.
-- **winter.user.activate**: The user's account has been activated.
+- **winter.user.activate**: The user has activated their own account by email validation.
 - **winter.user.deactivate**: The user has opted-out of the site by deactivating their account. This should be used to disable any content the user may want removed.
 - **winter.user.reactivate**: The user has reactivated their own account by signing back in. This should revive the users content on the site.
 - **winter.user.ban**: The user's account has been banned. An admin has banned the user.
