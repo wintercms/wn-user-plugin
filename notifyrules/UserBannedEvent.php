@@ -12,8 +12,8 @@ class UserBannedEvent extends UserEventBase
     {
         return [
             'id' => [
-                'title' => 'Id',
-                'label' => "The User's id",
+                'title' => 'ID',
+                'label' => "The User's ID",
             ],
             'name' => [
                 'title' => 'Name',
@@ -29,7 +29,7 @@ class UserBannedEvent extends UserEventBase
             ],
             'link' => [
                 'title' => 'Link',
-                'label' => "A link to the user management page"
+                'label' => "A link to the user's management page"
             ],
         ];
     }
