@@ -82,4 +82,4 @@
     - Rebrand table indexes
     - v2.0.1/rename_indexes.php
 "2.1.0":
-    - Add notifications for all user activation, ban and suspend events
+    - Add notifications for user activation, ban, and account suspension events
