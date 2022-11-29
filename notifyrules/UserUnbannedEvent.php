@@ -12,8 +12,8 @@ class UserUnbannedEvent extends UserEventBase
     {
         return [
             'id' => [
-                'title' => 'Id',
-                'label' => "The User's id",
+                'title' => 'ID',
+                'label' => "The User's ID",
             ],
             'name' => [
                 'title' => 'Name',
@@ -29,7 +29,7 @@ class UserUnbannedEvent extends UserEventBase
             ],
             'link' => [
                 'title' => 'Link',
-                'label' => "A link to the user management page"
+                'label' => "A link to the user's management page"
             ],
         ];
     }
@@ -40,7 +40,7 @@ class UserUnbannedEvent extends UserEventBase
 
         $params = $user->getNotificationVars();
         $params['user'] = $user;
-        $params['link'] = Backend::url('winter/user/users/preview/'.$user->id);
+        $params['link'] = Backend::url('winter/user/users/preview/' . $user->id);
 
         return $params;
     }
