@@ -33,7 +33,6 @@ class Throttle extends ThrottleBase
     public function beforeUpdate()
     {
         $this->wasSuspended = $this->user->isSuspended();
-
         $this->wasBanned = $this->user->isBanned();
     }
 
@@ -46,7 +45,7 @@ class Throttle extends ThrottleBase
         if (!$this->wasSuspended && $this->user->isSuspended()) {
             // User has become suspended. Fire appropriate event.
             Event::fire('winter.user.suspend', [$this->user]);
-        } else if($this->wasSuspended && !$this->user->isSuspended()) {
+        } elseif ($this->wasSuspended && !$this->user->isSuspended()) {
             // User has become unsuspended. Fire appropriate event.
             Event::fire('winter.user.unsuspend', [$this->user]);
         }
@@ -55,7 +54,7 @@ class Throttle extends ThrottleBase
         if (!$this->wasBanned && $this->user->isBanned()) {
             // User has become banned. Fire appropriate event.
             Event::fire('winter.user.ban', [$this->user]);
-        } else if($this->wasSuspended && !$this->user->isSuspended()) {
+        } elseif ($this->wasSuspended && !$this->user->isSuspended()) {
             // User has become unbanned. Fire appropriate event.
             Event::fire('winter.user.unban', [$this->user]);
         }
