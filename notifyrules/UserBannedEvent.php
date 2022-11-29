@@ -40,7 +40,7 @@ class UserBannedEvent extends UserEventBase
 
         $params = $user->getNotificationVars();
         $params['user'] = $user;
-        $params['link'] = Backend::url('winter/user/users/preview/'.$user->id);
+        $params['link'] = Backend::url('winter/user/users/preview/' . $user->id);
 
         return $params;
     }
