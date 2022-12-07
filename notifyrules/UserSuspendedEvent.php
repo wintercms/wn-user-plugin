@@ -1,22 +1,19 @@
-<?php namespace Winter\User\Classes;
+<?php namespace Winter\User\NotifyRules;
 
-use Winter\Notify\Classes\EventBase;
+use Winter\User\Classes\UserEventBase;
 
-class UserEventBase extends EventBase
+class UserSuspendedEvent extends UserEventBase
 {
-    /**
-     * @var array Local conditions supported by this event.
-     */
-    public $conditions = [
-        \Winter\User\NotifyRules\UserAttributeCondition::class
-    ];
-
     /**
      * Defines the usable parameters provided by this class.
      */
     public function defineParams()
     {
         return [
+            'id' => [
+                'title' => 'ID',
+                'label' => "The User's ID",
+            ],
             'name' => [
                 'title' => 'Name',
                 'label' => "User's first name",
@@ -29,6 +26,10 @@ class UserEventBase extends EventBase
                 'title' => 'Email',
                 'label' => "User's email address",
             ],
+            'link' => [
+                'title' => 'Link',
+                'label' => "A link to the user's management page"
+            ],
         ];
     }
 
@@ -38,7 +39,20 @@ class UserEventBase extends EventBase
 
         $params = $user->getNotificationVars();
         $params['user'] = $user;
+        $params['link'] = Backend::url('winter/user/users/preview/' . $user->id);
 
         return $params;
+    }
+
+    /**
+     * Returns information about this event, including name and description.
+     */
+    public function eventDetails()
+    {
+        return [
+            'name'        => 'Suspended',
+            'description' => 'A user was suspended',
+            'group'       => 'user'
+        ];
     }
 }

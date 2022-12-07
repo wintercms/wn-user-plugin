@@ -306,6 +306,10 @@ This plugin will fire some global events that can be useful for interacting with
 - **winter.user.activate**: The user has activated their own account by email validation.
 - **winter.user.deactivate**: The user has opted-out of the site by deactivating their account. This should be used to disable any content the user may want removed.
 - **winter.user.reactivate**: The user has reactivated their own account by signing back in. This should revive the users content on the site.
+- **winter.user.ban**: The user's account has been banned. An admin has banned the user.
+- **winter.user.unban**: The user's account has been unbanned. An admin has unbanned the user.
+- **winter.user.suspend**: The user's account has been suspended. This usually happens due to lockouts from invalid login attempts.
+- **winter.user.unsuspend**: The user's account has been unsuspended. This usually happens on a timer or manually by an admin.
 - **winter.user.getNotificationVars**: Fires when sending a user notification to enable passing more variables to the email templates. Passes the `$user` model the template will be for.
 - **winter.user.view.extendListToolbar**: Fires when the user listing page's toolbar is rendered.
 - **winter.user.view.extendPreviewToolbar**: Fires when the user preview page's toolbar is rendered.

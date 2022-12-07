@@ -388,7 +388,7 @@ class User extends UserBase
     }
 
     //
-    // IP Recording and Throttle
+    // IP Recording and RegistrationThrottle
     //
 
     /**
@@ -485,6 +485,7 @@ class User extends UserBase
     {
         $vars = [
             'name'     => $this->name,
+            'surname'  => $this->surname,
             'email'    => $this->email,
             'username' => $this->username,
             'login'    => $this->getLogin(),

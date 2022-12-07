@@ -598,7 +598,7 @@ class Account extends ComponentBase
     }
 
     /**
-     * Returns true if user is throttled.
+     * Returns true if user registration is throttled.
      * @return bool
      */
     protected function isRegisterThrottled()

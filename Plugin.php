@@ -146,11 +146,16 @@ class Plugin extends PluginBase
     {
         return [
             'winter.user::mail.activate',
+            'winter.user::mail.deactivate',
+            'winter.user::mail.reactivate',
             'winter.user::mail.welcome',
             'winter.user::mail.restore',
             'winter.user::mail.new_user',
-            'winter.user::mail.reactivate',
             'winter.user::mail.invite',
+            'winter.user::mail.ban',
+            'winter.user::mail.unban',
+            'winter.user::mail.suspend',
+            'winter.user::mail.unsuspend',
         ];
     }
 
@@ -169,7 +174,13 @@ class Plugin extends PluginBase
             ],
             'events' => [
                \Winter\User\NotifyRules\UserActivatedEvent::class,
+               \Winter\User\NotifyRules\UserDeactivatedEvent::class,
+               \Winter\User\NotifyRules\UserReactivatedEvent::class,
                \Winter\User\NotifyRules\UserRegisteredEvent::class,
+               \Winter\User\NotifyRules\UserBannedEvent::class,
+               \Winter\User\NotifyRules\UserUnbannedEvent::class,
+               \Winter\User\NotifyRules\UserSuspendedEvent::class,
+               \Winter\User\NotifyRules\UserUnsuspendedEvent::class,
             ],
             'actions' => [],
             'conditions' => [
@@ -211,7 +222,13 @@ class Plugin extends PluginBase
 
         Notifier::bindEvents([
             'winter.user.activate' => \Winter\User\NotifyRules\UserActivatedEvent::class,
+            'winter.user.deactivate' => \Winter\User\NotifyRules\UserDeactivatedEvent::class,
+            'winter.user.reactivate' => \Winter\User\NotifyRules\UserReactivatedEvent::class,
             'winter.user.register' => \Winter\User\NotifyRules\UserRegisteredEvent::class,
+            'winter.user.ban' => \Winter\User\NotifyRules\UserBannedEvent::class,
+            'winter.user.unban' => \Winter\User\NotifyRules\UserUnbannedEvent::class,
+            'winter.user.suspend' => \Winter\User\NotifyRules\UserSuspendedEvent::class,
+            'winter.user.unsuspend' => \Winter\User\NotifyRules\UserUnsuspendedEvent::class,
         ]);
 
         Notifier::instance()->registerCallback(function ($manager) {
