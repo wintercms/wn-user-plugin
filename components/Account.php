@@ -287,6 +287,7 @@ class Account extends ComponentBase
             }
 
             $rules = (new UserModel)->rules;
+            $rules['email'] = 'required|between:6,255|email';
 
             if ($this->loginAttribute() !== UserSettings::LOGIN_USERNAME) {
                 unset($rules['username']);
