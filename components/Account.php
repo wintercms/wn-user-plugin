@@ -287,7 +287,11 @@ class Account extends ComponentBase
             }
 
             $rules = (new UserModel)->rules;
-            $rules['email'] = 'required|between:6,255|email|sometimes';
+            $rules['email'] = 'required|between:6,255|email';
+
+            $validation->sometimes('email', 'required|between:6,255|email|unique', function($input) {
+                return \Winter\User\Models\User::where('email', $input->email)->where('is_guest', 0)->first() !== null;
+            });
 
             if ($this->loginAttribute() !== UserSettings::LOGIN_USERNAME) {
                 unset($rules['username']);
