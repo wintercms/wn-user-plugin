@@ -10,7 +10,7 @@
                 type="text"
                 class="form-control"
                 id="registerName"
-                placeholder="Enter your full name" />
+                placeholder="Enter your full name"/>
         </div>
 
         <div class="form-group">
@@ -20,7 +20,7 @@
                 type="email"
                 class="form-control"
                 id="registerEmail"
-                placeholder="Enter your email" />
+                placeholder="Enter your email"/>
         </div>
 
         {% if loginAttribute == "username" %}
@@ -31,7 +31,7 @@
                     type="text"
                     class="form-control"
                     id="registerUsername"
-                    placeholder="Enter your username" />
+                    placeholder="Enter your username"/>
             </div>
         {% endif %}
 
@@ -42,7 +42,8 @@
                 type="password"
                 class="form-control"
                 id="registerPassword"
-                placeholder="Choose a password" />
+                placeholder="Choose a password"
+                autocomplete="new-password"/>
         </div>
 
         <button type="submit" class="btn btn-default">Register</button>
