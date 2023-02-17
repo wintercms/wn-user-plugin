@@ -7,7 +7,8 @@
             type="text"
             class="form-control"
             id="userSigninLogin"
-            placeholder="Enter your {{ loginAttributeLabel|lower }}" />
+            placeholder="Enter your {{ loginAttributeLabel|lower }}"
+            autocomplete="username"/>
     </div>
 
     <div class="form-group">
@@ -17,7 +18,8 @@
             type="password"
             class="form-control"
             id="userSigninPassword"
-            placeholder="Enter your password" />
+            placeholder="Enter your password"
+            autocomplete="current-password"/>
     </div>
 
     {% if rememberLoginMode == 'ask' %}
