@@ -445,6 +445,36 @@ class Account extends ComponentBase
     }
 
     /**
+     * Removes the user's avatar if available.
+     *
+     * This will remove the user's avatar and default back to the Gravatar attached to the user's
+     * email address.
+     *
+     * @return void
+     */
+    public function onRemoveAvatar()
+    {
+        if (!$user = $this->user()) {
+            return;
+        }
+
+        if (!$user->avatar) {
+            Flash::info(Lang::get(/*Settings successfully saved!*/'winter.user::lang.account.no_avatar'));
+            return;
+        }
+
+        $user->avatar()->remove($user->avatar);
+
+        Flash::success(Lang::get(/*Settings successfully saved!*/'winter.user::lang.account.avatar_removed'));
+
+        $this->prepareVars();
+
+        // Force the avatar relationship to be removed even if User::getAvatarThumb()
+        // has stale references
+        $this->page['user']->setRelation('avatar', null);
+    }
+
+    /**
      * Deactivate user
      */
     public function onDeactivate()
