@@ -1,13 +1,13 @@
 # Front-end user plugin
 
-[![Build Status](https://img.shields.io/github/workflow/status/wintercms/wn-user-plugin/Tests)](https://github.com/wintercms/wn-user-plugin/actions)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/wintercms/wn-user-plugin/tests.yml?branch=main)](https://github.com/wintercms/wn-user-plugin/actions)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/wintercms/wn-user-plugin/blob/master/LICENCE.md)
 
 Front-end user management for Winter CMS.
 
 ## Requirements
 
-This plugin requires the [Ajax Framework](https://wintercms.com/docs/ajax/introduction) to be included in your layout/page in order to handle form requests.
+This plugin requires either [Snowboard framework](https://wintercms.com/docs/snowboard/introduction) or the original [Ajax Framework](https://wintercms.com/docs/ajax/introduction) to be included in your layout or page in order to handle form requests.
 
 ## Managing users
 
