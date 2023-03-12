@@ -178,31 +178,6 @@ class Plugin extends PluginBase
         ];
     }
 
-    public function registerClassAliases()
-    {
-        /**
-         * To allow compatibility with plugins that extend the original RainLab.User plugin,
-         * this will alias those classes to use the new Winter.User classes.
-         */
-        return [
-            \Winter\User\Plugin::class                   => \RainLab\User\Plugin::class,
-            \Winter\User\Classes\AuthManager::class      => \RainLab\User\Classes\AuthManager::class,
-            \Winter\User\Classes\AuthMiddleware::class   => \RainLab\User\Classes\AuthMiddleware::class,
-            \Winter\User\Classes\UserEventBase::class    => \RainLab\User\Classes\UserEventBase::class,
-            \Winter\User\Classes\UserRedirector::class   => \RainLab\User\Classes\UserRedirector::class,
-            \Winter\User\Components\Account::class       => \RainLab\User\Components\Account::class,
-            \Winter\User\Components\ResetPassword::class => \RainLab\User\Components\ResetPassword::class,
-            \Winter\User\Components\Session::class       => \RainLab\User\Components\Session::class,
-            \Winter\User\Controllers\Users::class        => \RainLab\User\Controllers\Users::class,
-            \Winter\User\Controllers\UserGroups::class   => \RainLab\User\Controllers\UserGroups::class,
-            \Winter\User\Facades\Auth::class             => \RainLab\User\Facades\Auth::class,
-            \Winter\User\Models\User::class              => \RainLab\User\Models\User::class,
-            \Winter\User\Models\MailBlocker::class       => \RainLab\User\Models\MailBlocker::class,
-            \Winter\User\Models\Throttle::class          => \RainLab\User\Models\Throttle::class,
-            \Winter\User\Models\Settings::class          => \RainLab\User\Models\Settings::class,
-        ];
-    }
-
     protected function bindNotificationEvents()
     {
         if (!class_exists(\Winter\Notify\Classes\Notifier::class)) {
