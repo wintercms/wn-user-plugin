@@ -1,6 +1,13 @@
+<script>
+function toggleAccountDeactivateForm() {
+    const form = document.getElementById('accountDeactivateForm');
+    form.style.display = (form.style.display === 'block') ? 'none' : 'block';
+}
+</script>
+
 <a
     href="javascript:;"
-    onclick="$('#accountDeactivateForm').toggle()">
+    onclick="toggleAccountDeactivateForm()">
     Deactivate account
 </a>
 
@@ -21,7 +28,7 @@
         </button>
         <a
             href="javascript:;"
-            onclick="$('#accountDeactivateForm').toggle()">
+            onclick="toggleAccountDeactivateForm()">
             I changed my mind
         </a>
     {{ form_close() }}
