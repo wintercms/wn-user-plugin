@@ -259,8 +259,9 @@ class MailBlocker extends Model
                 unset($recipients[$address]);
             }
         }
-
-        $message->setTo($recipients);
+     
+        $message->forgetTo();
+        $message->to($recipients);
         return count($recipients) ? null : false;
     }
 }
