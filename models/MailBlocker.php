@@ -1,9 +1,10 @@
-<?php namespace Winter\User\Models;
+<?php
 
-use Form;
+namespace Winter\User\Models;
+
 use Model;
-use System\Models\MailTemplate;
 use Exception;
+use System\Models\MailTemplate;
 
 /**
  * Mail Blocker
@@ -52,7 +53,7 @@ class MailBlocker extends Model
      * - verify: Only allow mail templates that are registered in the system.
      *
      * @param  array $templates Template name as key and boolean as value. If false, template is blocked.
-     * @param  Winter\User\Models\User $user
+     * @param  \Winter\User\Models\User $user
      * @param  array $options
      * @return void
      */
@@ -72,7 +73,7 @@ class MailBlocker extends Model
 
         if ($aliases) {
             $fillable = array_merge($fillable, array_values($aliases));
-            $templates = array_build($templates, function($key, $value) use ($aliases) {
+            $templates = array_build($templates, function ($key, $value) use ($aliases) {
                 return [array_get($aliases, $key, $key), $value];
             });
         }
@@ -102,7 +103,7 @@ class MailBlocker extends Model
     /**
      * Adds a block for a user and a mail view/template code.
      * @param string                   $template
-     * @param Winter\User\Models\User $user
+     * @param \Winter\User\Models\User $user
      * @return bool
      */
     public static function addBlock($template, $user)
@@ -131,7 +132,7 @@ class MailBlocker extends Model
     /**
      * Removes a block for a user and a mail view/template code.
      * @param string                   $template
-     * @param Winter\User\Models\User $user
+     * @param \Winter\User\Models\User $user
      * @return bool
      */
     public static function removeBlock($template, $user)
@@ -150,7 +151,7 @@ class MailBlocker extends Model
             return false;
         }
 
-        $blocker->each(function($block) {
+        $blocker->each(function ($block) {
             $block->delete();
         });
 
@@ -159,7 +160,7 @@ class MailBlocker extends Model
 
     /**
      * Blocks all mail messages for a user.
-     * @param Winter\User\Models\User $user
+     * @param \Winter\User\Models\User $user
      * @return bool
      */
     public static function blockAll($user)
@@ -169,7 +170,7 @@ class MailBlocker extends Model
 
     /**
      * Removes block on all mail messages for a user.
-     * @param Winter\User\Models\User $user
+     * @param \Winter\User\Models\User $user
      * @return bool
      */
     public static function unblockAll($user)
@@ -179,7 +180,7 @@ class MailBlocker extends Model
 
     /**
      * Checks if a user is blocking all templates.
-     * @param Winter\User\Models\User $user
+     * @param \Winter\User\Models\User $user
      * @return bool
      */
     public static function isBlockAll($user)
@@ -230,19 +231,21 @@ class MailBlocker extends Model
 
         $emails = array_keys($email);
 
-        return static::where(function($q) use ($template) {
-                $q->where('template', $template)->orWhere('template', '*');
-            })
-            ->whereIn('email', $emails)
-            ->lists('email');
+        return static::where(
+            function ($query) use ($template) {
+                $query
+                    ->where('template', $template)
+                    ->orWhere('template', '*');
+            }
+        )->whereIn('email', $emails)->lists('email');
     }
 
     /**
-     * Filters a Illuminate\Mail\Message and removes blocked recipients.
+     * Filters a \Illuminate\Mail\Message and removes blocked recipients.
      * If no recipients remain, false is returned. Returns null if mailing
      * should proceed.
      * @param  string $template
-     * @param  Illuminate\Mail\Message $message
+     * @param  \Illuminate\Mail\Message $message
      * @return bool|null
      */
     public static function filterMessage($template, $message)
@@ -254,13 +257,13 @@ class MailBlocker extends Model
             return null;
         }
 
-        foreach ($recipients as $address => $name) {
+        foreach (array_keys($recipients) as $address) {
             if (in_array($address, $blockedAddresses)) {
                 unset($recipients[$address]);
             }
         }
 
-        $message->setTo($recipients);
+        $message->to($recipients, null, true);
         return count($recipients) ? null : false;
     }
 }
