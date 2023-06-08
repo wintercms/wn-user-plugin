@@ -173,6 +173,8 @@ The User plugin displays AJAX error messages in a simple ``alert()``-box by defa
 
 ### Checking if a login name is already taken
 
+>**NOTE**: Implementing the below example may be a privacy risk as it allows unauthenticated users to query your service to see if given email addresses are signed up to your service or not.
+
 Here is a simple example of how you can quickly check if an email address / username is available in your registration forms. First, inside the page code, define the following AJAX handler to check the login name, here we are using the email address:
 
     public function onCheckEmail()
