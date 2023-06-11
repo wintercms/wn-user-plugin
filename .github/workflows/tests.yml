@@ -86,9 +86,9 @@ jobs:
 
       - name: Run unit tests (1.2/develop)
         if: matrix.winterRelease != 'v1.1.9'
-        run: php artisan winter:test -p Winter.User
+        run: php artisan winter:test -p Winter.User -- --testdox
 
       - name: Run unit tests (1.1)
         if: matrix.winterRelease == 'v1.1.9'
         working-directory: plugins/winter/user
-        run: ../../../vendor/bin/phpunit --bootstrap ../../../tests/bootstrap.php
+        run: ../../../vendor/bin/phpunit --bootstrap ../../../tests/bootstrap.php --testdox

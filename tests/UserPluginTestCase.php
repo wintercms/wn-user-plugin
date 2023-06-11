@@ -4,17 +4,7 @@ use App;
 use Illuminate\Foundation\AliasLoader;
 use Winter\User\Models\Settings;
 
-if (class_exists('System\Tests\Bootstrap\PluginTestCase')) {
-    class BaseTestCase extends \System\Tests\Bootstrap\PluginTestCase
-    {
-    }
-} else {
-    class BaseTestCase extends \PluginTestCase
-    {
-    }
-}
-
-abstract class UserPluginTestCase extends BaseTestCase
+abstract class UserPluginTestCase extends \PluginTestCase
 {
     /**
      * @var array   Plugins to refresh between tests.
@@ -41,7 +31,7 @@ abstract class UserPluginTestCase extends BaseTestCase
         // register the auth facade
         $alias = AliasLoader::getInstance();
         $alias->alias('Auth', 'Winter\User\Facades\Auth');
-    
+
         App::singleton('user.auth', function () {
             return \Winter\User\Classes\AuthManager::instance();
         });
