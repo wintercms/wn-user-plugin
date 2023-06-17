@@ -197,7 +197,9 @@ return [
         'new_password' => 'New Password',
         'new_password_confirm' => 'Confirm New Password',
         'update_requires_password' => 'Confirm password on update',
-        'update_requires_password_comment' => 'Require the current password of the user when changing their profile.'
+        'update_requires_password_comment' => 'Require the current password of the user when changing their profile.',
+        'no_avatar' => 'Your account has no display picture to remove.',
+        'avatar_removed' => 'Your display picture has been successfully removed.',
     ],
     'reset_password' => [
         'reset_password' => 'Reset Password',

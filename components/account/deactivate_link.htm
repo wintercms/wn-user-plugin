@@ -7,17 +7,17 @@ function toggleAccountDeactivateForm() {
 
 <a
     href="javascript:;"
-    onclick="toggleAccountDeactivateForm()">
+    onclick="toggleAccountDeactivateForm()"
+    class="deactivate"
+>
     Deactivate account
 </a>
 
 <div id="accountDeactivateForm" style="display: none">
     {{ form_ajax('onDeactivate') }}
-        <hr />
         <h3>Deactivate your account?</h3>
         <p>
-            Your account will be disabled and your details removed from the site.
-            You can reactivate your account any time by signing back in.
+            Your account will be disabled and your details removed from the site. You can reactivate your account any time by signing back in.
         </p>
         <div class="form-group">
             <label for="accountDeletePassword">To continue, please enter your password:</label>
