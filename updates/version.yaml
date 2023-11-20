@@ -83,3 +83,4 @@
     - v2.0.1/rename_indexes.php
 "2.1.0": "Enforce password length rules on sign in. Compatibility fixes."
 "2.2.0": "Add avatar removal. Password resets will activate users if User activation mode is enabled."
+"2.2.1": "Fixes a bug introduced by the adoption of symfony/mime required since Laravel 7.x where sending an email to a blocked email address would not be prevented."

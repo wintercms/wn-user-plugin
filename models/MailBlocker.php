@@ -211,11 +211,11 @@ class MailBlocker extends Model
     /**
      * Checks if an email address has blocked a given template,
      * returns an array of blocked emails.
-     * @param  string $template
-     * @param  string $email
+     * @param ?string $template
+     * @param string|string[] $email
      * @return array
      */
-    public static function checkForEmail($template, $email)
+    public static function checkForEmail(?string $template, $email): array
     {
         if (in_array($template, static::$safeTemplates)) {
             return [];
@@ -225,11 +225,7 @@ class MailBlocker extends Model
             return [];
         }
 
-        if (!is_array($email)) {
-            $email = [$email => null];
-        }
-
-        $emails = array_keys($email);
+        $emails = is_array($email) ? $email : [$email];
 
         return static::where(
             function ($query) use ($template) {
@@ -248,22 +244,40 @@ class MailBlocker extends Model
      * @param  \Illuminate\Mail\Message $message
      * @return bool|null
      */
-    public static function filterMessage($template, $message)
+    public static function filterMessage($template, $message): ?bool
     {
-        $recipients = $message->getTo();
-        $blockedAddresses = static::checkForEmail($template, $recipients);
+        $recipients = array_map(function ($address) {
+            return $address->getAddress();
+        }, $message->getTo());
+        $ccRecipients = array_map(function ($address) {
+            return $address->getAddress();
+        }, $message->getCc());
+        $bccRecipients = array_map(function ($address) {
+            return $address->getAddress();
+        }, $message->getBcc());
+
+        $allRecipients = array_merge($recipients, $ccRecipients, $bccRecipients);
+        $allRecipientsNoDuplicates = array_combine($allRecipients, $allRecipients);
+
+        $blockedAddresses = static::checkForEmail($template, $allRecipientsNoDuplicates);
 
         if (!count($blockedAddresses)) {
             return null;
         }
 
-        foreach (array_keys($recipients) as $address) {
-            if (in_array($address, $blockedAddresses)) {
-                unset($recipients[$address]);
-            }
-        }
+        $recipients = array_filter($recipients, function ($address) use (&$blockedAddresses) {
+            return !in_array($address, $blockedAddresses);
+        });
+        $ccRecipients = array_filter($ccRecipients, function ($address) use (&$blockedAddresses) {
+            return !in_array($address, $blockedAddresses);
+        });
+        $bccRecipients = array_filter($bccRecipients, function ($address) use (&$blockedAddresses) {
+            return !in_array($address, $blockedAddresses);
+        });
 
         $message->to($recipients, null, true);
-        return count($recipients) ? null : false;
+        $message->cc($ccRecipients, null, true);
+        $message->bcc($bccRecipients, null, true);
+        return (count($recipients) + count($ccRecipients) + count($bccRecipients)) ? null : false;
     }
 }
