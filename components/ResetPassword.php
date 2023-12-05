@@ -5,7 +5,6 @@ use Lang;
 use Mail;
 use Validator;
 use ValidationException;
-use ApplicationException;
 use Cms\Classes\ComponentBase;
 use Winter\User\Models\User as UserModel;
 
