@@ -175,7 +175,6 @@ return [
         'code_param_desc' => 'Параметр, в котором передаётся код активации.',
         'force_secure' => 'Использовать HTTPS',
         'force_secure_desc' => 'Всегда перенаправлять через HTTPS.',
-        'invalid_user' => 'Пользователь с такими данным не найден.',
         'invalid_activation_code' => 'Неверный код активации.',
         'invalid_deactivation_pass' => 'Введенный Вами пароль некорректен.',
         'invalid_current_pass' => 'Текущий пароль который вы ввели - недействителен.',

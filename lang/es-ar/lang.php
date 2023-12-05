@@ -128,7 +128,6 @@ return [
         'redirect_to_desc' => 'Nombre de la página a redirigir luego de una actualización, ingreso o registro.',
         'code_param' => 'Parámetro del Código de Activación',
         'code_param_desc' => 'El parámetro de URL utilizado para el código de activación de registro.',
-        'invalid_user' => 'No se encontraron usuarios con los datos proporcionados.',
         'invalid_activation_code' => 'Código de activación inválido.',
         'invalid_deactivation_pass' => 'La contraseña ingresada no es válida.',
         'success_activation' => 'Su cuenta fue activada con éxito.',

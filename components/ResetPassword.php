@@ -76,7 +76,7 @@ class ResetPassword extends ComponentBase
 
         $user = UserModel::findByEmail(post('email'));
         if (!$user || $user->is_guest) {
-            throw new ApplicationException(Lang::get(/*A user was not found with the given credentials.*/'winter.user::lang.account.invalid_user'));
+            return;
         }
 
         $code = implode('!', [$user->id, $user->getResetPasswordCode()]);

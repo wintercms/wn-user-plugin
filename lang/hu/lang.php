@@ -175,7 +175,6 @@ return [
         'code_param_desc' => 'A regisztrálás aktiválási kódjához használt oldal webcíme.',
         'force_secure' => 'Biztonságos protokoll kényszerítése',
         'force_secure_desc' => 'A webcím mindig legyen átírányítva HTTPS protokollra.',
-        'invalid_user' => 'Nem található a megadott hitelesítési adatokkal rendelkező felhasználó.',
         'invalid_activation_code' => 'A megadott aktiválási kód érvénytelen.',
         'invalid_deactivation_pass' => 'A megadott jelszó érvénytelen.',
         'invalid_current_pass' => 'A megadott jelenlegi jelszó érvénytelen.',

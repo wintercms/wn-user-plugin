@@ -175,7 +175,6 @@ return [
         'code_param_desc'                  => 'Parameter v URL-ju strani, ki se uporablja za aktivacijsko kodo registracije.',
         'force_secure'                     => 'Vsili zaščitni protokol',
         'force_secure_desc'                => 'URL vedno preusmeri s shemo HTTPS.',
-        'invalid_user'                     => 'Uporabnika ni mogoče najti glede na podane poverilnice.',
         'invalid_activation_code'          => 'Podana je neveljavna aktivacijska koda.',
         'invalid_deactivation_pass'        => 'Geslo, ki ste ga vnesli, je neveljavno.',
         'invalid_current_pass'             => 'Trenutno geslo, ki ste ga vnesli, je neveljavno.',

@@ -174,7 +174,6 @@ return [
         'code_param_desc' => 'پارامتر آدرس صفحه جهت استفاده در کد فعال سازی بهنگام ثبت نام',
         'force_secure' => 'اجباری کردن پروتکل ایمن',
         'force_secure_desc' => 'همیشه URL را با طرح HTTPS تغییر مسیر دهید.',
-        'invalid_user' => 'کاربری با اطلاعات وارد شده یافت نشد.',
         'invalid_activation_code' => 'مد فعالسازی معتبر نمیباشد',
         'invalid_deactivation_pass' => 'کلمه عبور وارد شده صحیح نمی باشد.',
         'invalid_current_pass' => 'رمز عبور فعلی که وارد کردید نامعتبر بود.',

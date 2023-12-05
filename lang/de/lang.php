@@ -180,7 +180,6 @@ return [
     'code_param_desc' => 'Dieser URL-Parameter wird als Registrierungs-Aktivierungscode verwendet',
     'force_secure' => 'Forciere sichere URLs',
     'force_secure_desc' => 'Verwende für Weiterleitungen immer das HTTPS-Protokoll.',
-    'invalid_user' => 'Es wurde kein Benutzer mit diesen Zugangsdaten gefunden.',
     'invalid_activation_code' => 'Ungültiger Aktivierungscode übermittelt',
     'invalid_deactivation_pass' => 'Das eingegebene Passwort war ungültig.',
     'success_activation' => 'Benutzerkonto erfolgreich aktiviert.',

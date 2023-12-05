@@ -162,7 +162,6 @@ return [
         'code_param_desc' => 'Sidadressadressparametern som används för registreringsaktiveringskoden',
         'force_secure' => 'Tvinga säkert protokoll',
         'force_secure_desc' => 'Omdirigera alltid URL-adressen med HTTPS-schemat.',
-        'invalid_user' => 'En användare kunde inte hittas med angivna referenser.',
         'invalid_activation_code' => 'Ogiltig aktiveringskod medföljer.',
         'invalid_deactivation_pass' => 'Lösenordet du angav var ogiltigt.',
         'success_activation' => 'Aktiverat ditt konto.',

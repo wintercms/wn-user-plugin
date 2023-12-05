@@ -149,7 +149,6 @@ return [
         'redirect_to_desc' => 'Nome da página para a qual redirecionar após atualização, entrada ou registo.',
         'code_param' => 'Parâmetro de Código de Ativação',
         'code_param_desc' => 'O parâmetro de URL da página usado para o código de ativação de registo',
-        'invalid_user' => 'Não foi encontrado um utilizador com as credenciais informadas.',
         'invalid_activation_code' => 'Código de ativação inserido é inválido',
         'invalid_deactivation_pass' => 'A password inserida é inválida.',
         'success_activation' => 'Conta foi ativada com sucesso.',

@@ -149,7 +149,6 @@ return [
         'redirect_to_desc' => 'Nome da página para a qual redirecionar após atualização, login ou cadastro.',
         'code_param' => 'Parâmetro de Código de Ativação',
         'code_param_desc' => 'O parâmetro de URL da página usado para o código de ativação de cadastro',
-        'invalid_user' => 'Não foi encontrado um usuário com as credenciais informadas.',
         'invalid_activation_code' => 'Código de ativação informado inválido',
         'invalid_deactivation_pass' => 'A senha inserida é inválida.',
         'success_activation' => 'Sua conta foi ativada com sucesso.',
