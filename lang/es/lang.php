@@ -169,7 +169,6 @@ return [
         'code_param_desc' => 'El parámetro de URL en la página usuado para el código de activación del registro.',
         'force_secure' => 'Forzar protocolo seguro',
         'force_secure_desc' => 'Siempre redirigir la URL utilizando HTTPS.',
-        'invalid_user' => 'No se encontro un usuario con las credenciales proporcionadas.',
         'invalid_activation_code' => 'El código de activación que proporcionó es inválido.',
         'invalid_deactivation_pass' => 'La contraseña que ingresó es inválida.',
         'success_activation' => 'Su perfil fue activado exitosamente.',

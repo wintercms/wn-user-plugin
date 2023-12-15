@@ -162,7 +162,6 @@ return [
         'code_param_desc' => '등록 활성화 코드에 사용되는 페이지 URL파라미터',
         'force_secure' => '강제 보안 프로토콜',
         'force_secure_desc' => '항상 URL을 HTTPS스키마로 리디렉션 하십시오.',
-        'invalid_user' => '지정한 자격 증명을 가진 사용자를 찾을 수 없습니다.',
         'invalid_activation_code' => '제공된 활성화 코드가 잘못되었습니다.',
         'invalid_deactivation_pass' => '입력한 암호가 잘못되었습니다.',
         'success_activation' => '계정이 활성화되었습니다.',

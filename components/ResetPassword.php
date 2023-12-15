@@ -5,7 +5,6 @@ use Lang;
 use Mail;
 use Validator;
 use ValidationException;
-use ApplicationException;
 use Cms\Classes\ComponentBase;
 use Winter\User\Models\User as UserModel;
 
@@ -76,7 +75,7 @@ class ResetPassword extends ComponentBase
 
         $user = UserModel::findByEmail(post('email'));
         if (!$user || $user->is_guest) {
-            throw new ApplicationException(Lang::get(/*A user was not found with the given credentials.*/'winter.user::lang.account.invalid_user'));
+            return;
         }
 
         $code = implode('!', [$user->id, $user->getResetPasswordCode()]);
@@ -90,7 +89,7 @@ class ResetPassword extends ComponentBase
             'code' => $code
         ];
 
-        Mail::send('winter.user::mail.restore', $data, function($message) use ($user) {
+        Mail::queue('winter.user::mail.restore', $data, function($message) use ($user) {
             $message->to($user->email, $user->full_name);
         });
     }

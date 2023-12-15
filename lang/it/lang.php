@@ -151,7 +151,6 @@ return [
         'redirect_to_desc' => 'Pagina verso cui essere reindirizzati dopo modifica, accesso o registrazione.',
         'code_param' => 'Parametro codice di attivazione',
         'code_param_desc' => 'Parametro dell\'URL usato per il codice di attivazione',
-        'invalid_user' => 'Impossibile effettuare il login con le credenziali fornite.',
         'invalid_activation_code' => 'Codice di attivazione fornito non valido.',
         'invalid_deactivation_pass' => 'La password inserita non è valida.',
         'success_activation' => 'Account attivato con successo.',

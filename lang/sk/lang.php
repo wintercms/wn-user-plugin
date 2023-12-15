@@ -161,7 +161,6 @@ return [
         'code_param_desc' => 'Parameter URL stránky použitý ako kód aktivácie registrácie',
         'force_secure' => 'Vynútiť bezpečný protokol',
         'force_secure_desc' => 'Vždy presmerujte adresu URL schémou HTTPS.',
-        'invalid_user' => 'Používateľ s uvedenými povereniami nebol nájdený.',
         'invalid_activation_code' => 'Bol zadaný neplatný aktivačný kód.',
         'invalid_deactivation_pass' => 'Zadané heslo je neplatné.',
         'success_activation' => 'Váš účet bol úspešne aktivovaný.',

@@ -175,7 +175,6 @@ return [
         'code_param_desc' => 'Üyelik aktivasyon kodu için sayfanın URL parametresi kullanılır.',
         'force_secure' => 'Güvenli protokole zorla',
         'force_secure_desc' => 'URL’yi her zaman HTTPS şemasına yönlendirin.',
-        'invalid_user' => 'Girilen bilgilerle eşleşen bir üye yok.',
         'invalid_activation_code' => 'Geçersiz aktivasyon kodu',
         'invalid_current_pass' => 'Mevcut şifrenizi hatalı girdiniz.',
         'invalid_deactivation_pass' => 'Girdiğiniz şifre geçersiz.',

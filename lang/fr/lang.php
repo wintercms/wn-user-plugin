@@ -162,7 +162,6 @@ return [
         'code_param_desc' => 'URL de la page utilisée pour l’enregistrement du code d’activation',
         'force_secure' => 'Forer le protocole sécurisé',
         'force_secure_desc' => 'Toujours rediriger l\'URL avec le schéma HTTPS.',
-        'invalid_user' => 'Aucun utilisateur ne correspond aux identifiants fournis.',
         'invalid_activation_code' => 'Le code d’activation fourni est invalide.',
         'invalid_deactivation_pass' => 'Le mot de passe saisi est invalide.',
         'success_activation' => 'Votre compte a été activé avec succès !',

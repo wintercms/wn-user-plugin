@@ -162,7 +162,6 @@ return [
         'code_param_desc' => 'Parametr URL strony używany do rejestracji',
         'force_secure' => 'Wymuś bezpieczny protokół',
         'force_secure_desc' => 'Zawsze przekierowuj adres URL ze schematem HTTPS.',
-        'invalid_user' => 'Nie znaleziono użytkownika o podanych danych uwierzytelniających.',
         'invalid_activation_code' => 'Podano niepoprawny kod aktywacyjny.',
         'invalid_deactivation_pass' => 'Podane hasło jest nieprawidłowe.',
         'success_activation' => 'Pomyślnie aktywowałeś swoje konto.',
