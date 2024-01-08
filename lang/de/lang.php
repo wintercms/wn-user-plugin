@@ -182,6 +182,8 @@ return [
     'force_secure_desc' => 'Verwende für Weiterleitungen immer das HTTPS-Protokoll.',
     'invalid_activation_code' => 'Ungültiger Aktivierungscode übermittelt',
     'invalid_deactivation_pass' => 'Das eingegebene Passwort war ungültig.',
+    'invalid_username' => 'Der eingegebene Nutzername ist ungültig.',
+    'invalid_email' => 'Die eingegebene E-Mail ist ungültig.',
     'success_activation' => 'Benutzerkonto erfolgreich aktiviert.',
     'success_deactivation' => 'Konto erfolgreich deaktiviert. Schade, dass du gehst!',
     'success_saved' => 'Einstellungen erfolgreich gespeichert!',
