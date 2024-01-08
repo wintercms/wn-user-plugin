@@ -212,7 +212,7 @@ class Account extends ComponentBase
 
             $data['login'] = trim($data['login']);
 
-            $validation = Validator::make($data, $rules);
+            $validation = Validator::make($data, $rules, $messages);
             if ($validation->fails()) {
                 throw new ValidationException($validation);
             }
