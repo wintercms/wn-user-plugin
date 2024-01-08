@@ -194,12 +194,17 @@ class Account extends ComponentBase
              */
             $data = post();
             $rules = [];
+            $messages = [];
 
             $rules['login'] = $this->loginAttribute() == UserSettings::LOGIN_USERNAME
                 ? 'required|between:2,255'
                 : 'required|email|between:6,255';
 
             $rules['password'] = 'required|between:' . UserModel::getMinPasswordLength() . ',255';
+
+            $messages['login'] = $this->loginAttribute() == UserSettings::LOGIN_USERNAME
+                ? trans('winter.user::lang.account.invalid_username')
+                : trans('winter.user::lang.account.invalid_email');
 
             if (!array_key_exists('login', $data)) {
                 $data['login'] = post('username', post('email'));
