@@ -519,9 +519,15 @@ class User extends UserBase
         /*
          * Extensibility
          */
-        $result = Event::fire('winter.user.getNotificationVars', [$this]);
-        if ($result && is_array($result)) {
-            $vars = call_user_func_array('array_merge', $result) + $vars;
+        $results = Event::fire('winter.user.getNotificationVars', [$this]);
+        if ($results && is_array($results)) {
+            $tempResults = [];
+            foreach ($results as $result) {
+                if ($result && is_array($result)) {
+                    $tempResults = array_merge($tempResults, $result);
+                }
+            }
+            $vars = $tempResults + $vars;
         }
 
         return $vars;
