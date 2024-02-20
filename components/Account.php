@@ -194,6 +194,7 @@ class Account extends ComponentBase
              */
             $data = post();
             $rules = [];
+            $messages = [];
 
             $rules['login'] = $this->loginAttribute() == UserSettings::LOGIN_USERNAME
                 ? 'required|between:2,255'
@@ -201,13 +202,17 @@ class Account extends ComponentBase
 
             $rules['password'] = 'required|between:' . UserModel::getMinPasswordLength() . ',255';
 
+            $messages['login'] = $this->loginAttribute() == UserSettings::LOGIN_USERNAME
+                ? trans('winter.user::lang.account.invalid_username')
+                : trans('winter.user::lang.account.invalid_email');
+
             if (!array_key_exists('login', $data)) {
                 $data['login'] = post('username', post('email'));
             }
 
             $data['login'] = trim($data['login']);
 
-            $validation = Validator::make($data, $rules);
+            $validation = Validator::make($data, $rules, $messages);
             if ($validation->fails()) {
                 throw new ValidationException($validation);
             }
