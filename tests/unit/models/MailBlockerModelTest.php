@@ -159,7 +159,7 @@ class MailBlockerModelTest extends UserPluginTestCase
      * @param mixed $userMock2
      * @return void
      */
-    private static function mockBlockers(mixed $userMock1, mixed $userMock2): void
+    private static function mockBlockers($userMock1, $userMock2): void
     {
         $mailBlockerMock1 = Mockery::mock(MailBlocker::class)->makePartial();
         $mailBlockerMock2 = Mockery::mock(MailBlocker::class)->makePartial();
