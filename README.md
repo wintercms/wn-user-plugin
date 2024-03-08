@@ -346,6 +346,18 @@ To disable the notification and password reset, pass the first argument as false
 $user->convertToRegistered(false);
 ```
 
+## Determining whether a user belongs to a group
+
+The `User` class has a `inGroup` method that checks whether the user is in the specified group. The method takes as a parameter a string with the value of the group's `code` field parameter.
+
+Usage. For example, we want to display something only to users of the **Magazine editor** group whose code is specified as `writers`:
+
+```twig
+{% if user.inGroup('writers') %}
+    <!-- Available only to users of the Magazine editor group -->
+{% endif %}
+```
+
 ## Events
 
 This plugin will fire some global events that can be useful for interacting with other plugins.
