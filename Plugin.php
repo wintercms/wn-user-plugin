@@ -112,13 +112,13 @@ class Plugin extends PluginBase
                 'sideMenu' => [
                     'users' => [
                         'label' => 'winter.user::lang.users.menu_label',
-                        'icon'        => 'icon-user',
+                        'icon'        => 'icon-people-group',
                         'url'         => Backend::url('winter/user/users'),
                         'permissions' => ['winter.users.access_users']
                     ],
                     'usergroups' => [
                         'label'       => 'winter.user::lang.groups.menu_label',
-                        'icon'        => 'icon-users',
+                        'icon'        => 'icon-users-viewfinder',
                         'url'         => Backend::url('winter/user/usergroups'),
                         'permissions' => ['winter.users.access_groups']
                     ]
@@ -134,7 +134,7 @@ class Plugin extends PluginBase
                 'label'       => 'winter.user::lang.settings.menu_label',
                 'description' => 'winter.user::lang.settings.menu_description',
                 'category'    => SettingsManager::CATEGORY_USERS,
-                'icon'        => 'icon-cog',
+                'icon'        => 'icon-user-gear',
                 'class'       => 'Winter\User\Models\Settings',
                 'order'       => 500,
                 'permissions' => ['winter.users.access_settings']
