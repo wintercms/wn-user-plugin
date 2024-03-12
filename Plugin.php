@@ -112,7 +112,7 @@ class Plugin extends PluginBase
                 'sideMenu' => [
                     'users' => [
                         'label' => 'winter.user::lang.users.menu_label',
-                        'icon'        => 'icon-people-group',
+                        'icon'        => 'icon-user',
                         'url'         => Backend::url('winter/user/users'),
                         'permissions' => ['winter.users.access_users']
                     ],
