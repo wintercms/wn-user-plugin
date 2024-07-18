@@ -9,6 +9,9 @@ use Winter\User\Models\MailBlocker;
 use Winter\User\Models\User;
 use Winter\User\Tests\UserPluginTestCase;
 
+/**
+ * @requires PHP >= 8.0
+ */
 class MailBlockerModelTest extends UserPluginTestCase
 {
     public function testFilterMessage_to()
