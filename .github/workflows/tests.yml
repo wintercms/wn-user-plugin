@@ -18,7 +18,7 @@ jobs:
         phpVersion: ['8.0', '8.1', '8.2', '8.3']
         winterBranch: ['develop']
         include:
-          - operatingSystem: [ubuntu-latest]
+          - operatingSystem: ubuntu-latest
             phpVersion: '7.4'
             winterBranch: '1.1'
       fail-fast: false
