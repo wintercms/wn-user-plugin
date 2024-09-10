@@ -93,7 +93,7 @@ The `security` property can be user, guest or all. The `redirect` property refer
 Access to routes can be restricted by applying the `AuthMiddleware`.
 
 ```php
-Route::group(['middleware' => 'Winter\User\Classes\AuthMiddleware'], function () {
+Route::group(['middleware' => ['web', 'Winter\User\Classes\AuthMiddleware']], function () {
     // All routes here will require authentication
 });
 ```
