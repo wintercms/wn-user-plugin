@@ -1,13 +1,34 @@
-# Front-end user plugin
+# Frontend User plugin
 
 [![Build Status](https://img.shields.io/github/actions/workflow/status/wintercms/wn-user-plugin/tests.yml?branch=main)](https://github.com/wintercms/wn-user-plugin/actions)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/wintercms/wn-user-plugin/blob/master/LICENCE.md)
 
-Front-end user management for Winter CMS.
+Provides frontend user management for Winter CMS. This allows you to separate out the users on the frontend of your Winter CMS website / application from the more privileged backend users that come default in Winter CMS.
+
+Supports:
+- Users
+- Groups
+- Registration / Activation / Login / Logout / Password Reset
+- Authentication / Authorization
+- Extensible by external plugins
 
 ## Requirements
 
 This plugin requires either [Snowboard framework](https://wintercms.com/docs/v1.2/docs/snowboard/introduction) or the original [Ajax Framework](https://wintercms.com/docs/v1.2/docs/ajax/introduction) to be included in your layout or page in order to handle form requests.
+
+## Installation
+
+This plugin is available for installation via [Composer](http://getcomposer.org/).
+
+```bash
+composer require winter/wn-user-plugin
+```
+
+After installing the plugin you will need to run the migrations and (if you are using a [public folder](https://wintercms.com/docs/develop/docs/setup/configuration#using-a-public-folder)) [republish your public directory](https://wintercms.com/docs/develop/docs/console/setup-maintenance#mirror-public-files).
+
+```bash
+php artisan migrate
+```
 
 ## Managing users
 
