@@ -6,79 +6,59 @@ on:
       - main
   pull_request:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   phpUnitTests:
-    runs-on: ubuntu-latest
-    name: Unit Tests / PHP ${{ matrix.phpVersions }}
     strategy:
-      max-parallel: 6
       matrix:
-        phpVersions: ['7.2', '7.3', '7.4', '8.0']
+        operatingSystem: [ubuntu-latest]
+        phpVersion: ['8.1', '8.2', '8.3', '8.4']
+        winterBranch: ['develop']
+        include:
+          - operatingSystem: ubuntu-latest
+            phpVersion: '7.4'
+            winterBranch: '1.1'
       fail-fast: false
+
+    name: PHP ${{ matrix.phpVersion }} / Winter ${{ matrix.winterBranch }}
+    runs-on: ${{ matrix.operatingSystem }}
+
     env:
-      phpExtensions: mbstring, intl, gd, xml, sqlite
-      cacheKey: ext-cache-v1
-      winterCmsRelease: develop
+      extensions: curl, fileinfo, gd, mbstring, openssl, pdo, pdo_sqlite, sqlite3, xml, zip
+
     steps:
+      - name: Checkout Winter CMS
+        uses: actions/checkout@v4
+        with:
+          repository: wintercms/winter
+          ref: ${{ matrix.winterBranch }}
+
       - name: Checkout changes
         uses: actions/checkout@v2
         with:
-          path: user-plugin
+          path: plugins/winter/user
 
-      - name: Setup cache environment
-        id: extcache
-        uses: shivammathur/cache-extensions@v1
-        with:
-          php-version: ${{ matrix.phpVersions }}
-          extensions: ${{ env.phpExtensions }}
-          key: ${{ env.cacheKey }}
-
-      - name: Cache extensions
-        uses: actions/cache@v2
-        with:
-          path: ${{ steps.extcache.outputs.dir }}
-          key: ${{ steps.extcache.outputs.key }}
-          restore-keys: ${{ steps.extcache.outputs.key }}
-
-      - name: Install PHP and extensions
+      - name: Install PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.phpVersions }}
-          extensions: ${{ env.phpExtensions }}
+          php-version: ${{ matrix.phpVersion }}
           tools: composer:v2
-          coverage: none
-
-      - name: Install Winter CMS
-        run: |
-          wget https://github.com/wintercms/winter/archive/${{ env.winterCmsRelease }}.zip
-          unzip ${{ env.winterCmsRelease }}.zip
-          rm ${{ env.winterCmsRelease }}.zip
-          shopt -s dotglob
-          mv winter-${{ env.winterCmsRelease }}/* ./
-          rmdir winter-${{ env.winterCmsRelease }}
-          shopt -u dotglob
-          cp config/cms.php config/testing/cms.php
-          mkdir -p plugins/winter
-          mv user-plugin plugins/winter/user
-
-      - name: Get Composer cache directory
-        id: composercache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
-
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: ${{ steps.composercache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
-          restore-keys: ${{ runner.os }}-composer-
+          extensions: ${{ env.extensions }}
 
       - name: Install Composer dependencies
-        run: composer install --no-interaction --no-progress
+        run: composer install --no-interaction --no-progress --no-scripts
 
       - name: Run linting
         run: ./vendor/bin/parallel-lint plugins/winter/user
 
-      - name: Run unit tests
-        run: |
-          cd plugins/winter/user
-          ../../../vendor/bin/phpunit
+      - name: Run unit tests (develop branch)
+        if: matrix.winterBranch != '1.1'
+        run: php artisan winter:test -p Winter.User -- --testdox
+
+      - name: Run unit tests (1.1 branch)
+        if: matrix.winterBranch == '1.1'
+        working-directory: plugins/winter/user
+        run: ../../../vendor/bin/phpunit --bootstrap ../../../tests/bootstrap.php --testdox

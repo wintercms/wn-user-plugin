@@ -172,7 +172,6 @@ return [
         'code_param_desc' => 'Parameter URL pada halaman yang digunakan untuk kode aktivasi pendaftaran',
         'force_secure' => 'Paksa protokol yang aman',
         'force_secure_desc' => 'Selalu mengarahkan URL dengan skema HTTPS.',
-        'invalid_user' => 'Pengguna dengan kredensial yang diberikan tidak ditemukan.',
         'invalid_activation_code' => 'Kode aktivasi yang diberikan tidak valid.',
         'invalid_deactivation_pass' => 'Kata sandi yang diberikan tidak valid.',
         'invalid_current_pass' => 'Kata sandi saat ini yang Anda masukkan tidak valid.',

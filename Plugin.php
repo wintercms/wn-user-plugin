@@ -118,7 +118,7 @@ class Plugin extends PluginBase
                     ],
                     'usergroups' => [
                         'label'       => 'winter.user::lang.groups.menu_label',
-                        'icon'        => 'icon-users',
+                        'icon'        => 'icon-users-viewfinder',
                         'url'         => Backend::url('winter/user/usergroups'),
                         'permissions' => ['winter.users.access_groups']
                     ]
@@ -134,7 +134,7 @@ class Plugin extends PluginBase
                 'label'       => 'winter.user::lang.settings.menu_label',
                 'description' => 'winter.user::lang.settings.menu_description',
                 'category'    => SettingsManager::CATEGORY_USERS,
-                'icon'        => 'icon-cog',
+                'icon'        => 'icon-user-gear',
                 'class'       => 'Winter\User\Models\Settings',
                 'order'       => 500,
                 'permissions' => ['winter.users.access_settings']
@@ -175,31 +175,6 @@ class Plugin extends PluginBase
             'conditions' => [
                 \Winter\User\NotifyRules\UserAttributeCondition::class,
             ],
-        ];
-    }
-
-    public function registerClassAliases()
-    {
-        /**
-         * To allow compatibility with plugins that extend the original RainLab.User plugin,
-         * this will alias those classes to use the new Winter.User classes.
-         */
-        return [
-            \Winter\User\Plugin::class                   => \RainLab\User\Plugin::class,
-            \Winter\User\Classes\AuthManager::class      => \RainLab\User\Classes\AuthManager::class,
-            \Winter\User\Classes\AuthMiddleware::class   => \RainLab\User\Classes\AuthMiddleware::class,
-            \Winter\User\Classes\UserEventBase::class    => \RainLab\User\Classes\UserEventBase::class,
-            \Winter\User\Classes\UserRedirector::class   => \RainLab\User\Classes\UserRedirector::class,
-            \Winter\User\Components\Account::class       => \RainLab\User\Components\Account::class,
-            \Winter\User\Components\ResetPassword::class => \RainLab\User\Components\ResetPassword::class,
-            \Winter\User\Components\Session::class       => \RainLab\User\Components\Session::class,
-            \Winter\User\Controllers\Users::class        => \RainLab\User\Controllers\Users::class,
-            \Winter\User\Controllers\UserGroups::class   => \RainLab\User\Controllers\UserGroups::class,
-            \Winter\User\Facades\Auth::class             => \RainLab\User\Facades\Auth::class,
-            \Winter\User\Models\User::class              => \RainLab\User\Models\User::class,
-            \Winter\User\Models\MailBlocker::class       => \RainLab\User\Models\MailBlocker::class,
-            \Winter\User\Models\Throttle::class          => \RainLab\User\Models\Throttle::class,
-            \Winter\User\Models\Settings::class          => \RainLab\User\Models\Settings::class,
         ];
     }
 

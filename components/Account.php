@@ -194,12 +194,17 @@ class Account extends ComponentBase
              */
             $data = post();
             $rules = [];
+            $messages = [];
 
             $rules['login'] = $this->loginAttribute() == UserSettings::LOGIN_USERNAME
                 ? 'required|between:2,255'
                 : 'required|email|between:6,255';
 
-            $rules['password'] = 'required|between:4,255';
+            $rules['password'] = 'required|between:' . UserModel::getMinPasswordLength() . ',255';
+
+            $messages['login'] = $this->loginAttribute() == UserSettings::LOGIN_USERNAME
+                ? trans('winter.user::lang.account.invalid_username')
+                : trans('winter.user::lang.account.invalid_email');
 
             if (!array_key_exists('login', $data)) {
                 $data['login'] = post('username', post('email'));
@@ -207,7 +212,7 @@ class Account extends ComponentBase
 
             $data['login'] = trim($data['login']);
 
-            $validation = Validator::make($data, $rules);
+            $validation = Validator::make($data, $rules, $messages);
             if ($validation->fails()) {
                 throw new ValidationException($validation);
             }
@@ -442,6 +447,36 @@ class Account extends ComponentBase
         }
 
         $this->prepareVars();
+    }
+
+    /**
+     * Removes the user's avatar if available.
+     *
+     * This will remove the user's avatar and default back to the Gravatar attached to the user's
+     * email address.
+     *
+     * @return void
+     */
+    public function onRemoveAvatar()
+    {
+        if (!$user = $this->user()) {
+            return;
+        }
+
+        if (!$user->avatar) {
+            Flash::info(Lang::get(/*Settings successfully saved!*/'winter.user::lang.account.no_avatar'));
+            return;
+        }
+
+        $user->avatar()->remove($user->avatar);
+
+        Flash::success(Lang::get(/*Settings successfully saved!*/'winter.user::lang.account.avatar_removed'));
+
+        $this->prepareVars();
+
+        // Force the avatar relationship to be removed even if User::getAvatarThumb()
+        // has stale references
+        $this->page['user']->setRelation('avatar', null);
     }
 
     /**

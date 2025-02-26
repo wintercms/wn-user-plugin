@@ -152,7 +152,6 @@
         'redirect_to_desc' => '登录或注册成功后跳转页面.',
         'code_param' => '激活码参数。',
         'code_param_desc' => '激活码的验证页面URL参数',
-        'invalid_user' => '未找到该用户。',
         'invalid_activation_code' => '错误的激活码',
         'invalid_deactivation_pass' => '密码不正确。',
         'success_activation' => '您的帐号已成功激活.',

@@ -107,6 +107,31 @@ class User extends UserBase
     }
 
     /**
+     * Attempts to reset a user's password by matching the reset code generated with the user's.
+     *
+     * If user activation is enabled, the user will be activated as well.
+     *
+     * @param string $resetCode
+     * @param string $newPassword
+     * @return bool
+     */
+    public function attemptResetPassword($resetCode, $newPassword)
+    {
+        if (!parent::attemptResetPassword($resetCode, $newPassword)) {
+            return false;
+        }
+
+        if ($this->isActivatedByUser()) {
+            $this->activation_code = null;
+            $this->is_activated = true;
+            $this->activated_at = $this->freshTimestamp();
+            $this->forceSave();
+        }
+
+        return true;
+    }
+
+    /**
      * Converts a guest user to a registered one and sends an invitation notification.
      * @return void
      */
@@ -494,9 +519,15 @@ class User extends UserBase
         /*
          * Extensibility
          */
-        $result = Event::fire('winter.user.getNotificationVars', [$this]);
-        if ($result && is_array($result)) {
-            $vars = call_user_func_array('array_merge', $result) + $vars;
+        $results = Event::fire('winter.user.getNotificationVars', [$this]);
+        if ($results && is_array($results)) {
+            $tempResults = [];
+            foreach ($results as $result) {
+                if ($result && is_array($result)) {
+                    $tempResults = array_merge($tempResults, $result);
+                }
+            }
+            $vars = $tempResults + $vars;
         }
 
         return $vars;
@@ -540,5 +571,13 @@ class User extends UserBase
         }
 
         return true;
+    }
+
+    /**
+     * Determines if activation is done by the user.
+     */
+    public function isActivatedByUser(): bool
+    {
+        return (UserSettings::get('activate_mode') === UserSettings::ACTIVATE_USER);
     }
 }

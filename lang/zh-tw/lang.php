@@ -175,7 +175,6 @@ return [
         'code_param_desc' => '用於夾帶啟動碼的網址參數名稱。',
         'force_secure' => '強制使用 HTTPS',
         'force_secure_desc' => '強制使用 HTTPS 重新導向此網址。',
-        'invalid_user' => '帳號有誤。',
         'invalid_activation_code' => '啟動碼錯誤。',
         'invalid_deactivation_pass' => '您輸入的密碼有誤。',
         'invalid_current_pass' => '您輸入的密碼有誤。',

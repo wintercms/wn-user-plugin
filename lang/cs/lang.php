@@ -150,7 +150,6 @@ return [
         'redirect_to_desc' => 'Název stránky pro přesměrování po úpravě údajů, přihlášení nebo registraci.',
         'code_param' => 'Parametr aktivačního kódu',
         'code_param_desc' => 'Parametr z URL stránky, který se použije pro aktivační kód',
-        'invalid_user' => 'Uživatel s těmito údaji nebyl nalezen.',
         'invalid_activation_code' => 'Zadán nesprávný parametr pro aktivační kód',
         'invalid_deactivation_pass' => 'Zadané heslo není správné.',
         'success_activation' => 'Váš účet byl úspěšně aktivován.',

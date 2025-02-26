@@ -176,7 +176,6 @@ return [
         'code_param_desc' => 'De pagina URL parameter die gebruikt wordt voor de registratie activatie code.',
         'force_secure' => 'Forceer beveiligd protocol',
         'force_secure_desc' => 'Stuur de URL altijd door naar HTTPS.',
-        'invalid_user' => 'Geen gebruiker gevonden.',
         'invalid_activation_code' => 'Onjuiste activatie code',
         'invalid_deactivation_pass' => 'Het ingevoerde wachtwoord is ongeldig.',
         'invalid_current_pass' => 'Het ingevoerde huidige wachtwoord is ongeldig.',
