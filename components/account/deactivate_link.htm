@@ -10,26 +10,26 @@ function toggleAccountDeactivateForm() {
     onclick="toggleAccountDeactivateForm()"
     class="deactivate"
 >
-    Deactivate account
+    {{ 'winter.user::frontend.deactivate.link' | trans }}
 </a>
 
 <div id="accountDeactivateForm" style="display: none">
     {{ form_ajax('onDeactivate') }}
-        <h3>Deactivate your account?</h3>
+        <h3>{{ 'winter.user::frontend.deactivate.title' | trans }}</h3>
         <p>
-            Your account will be disabled and your details removed from the site. You can reactivate your account any time by signing back in.
+            {{ 'winter.user::frontend.deactivate.infos' | trans }}
         </p>
         <div class="form-group">
-            <label for="accountDeletePassword">To continue, please enter your password:</label>
+            <label for="accountDeletePassword">{{ 'winter.user::frontend.deactivate.enter_password' | trans }}</label>
             <input name="password" type="password" class="form-control" id="accountDeletePassword" />
         </div>
         <button type="submit" class="btn btn-danger">
-            Confirm Deactivate Account
+            {{ 'winter.user::frontend.deactivate.button' | trans }}
         </button>
         <a
             href="javascript:;"
             onclick="toggleAccountDeactivateForm()">
-            I changed my mind
+            {{ 'winter.user::frontend.deactivate.mind_changed' | trans }}
         </a>
     {{ form_close() }}
 </div>
