@@ -27,7 +27,7 @@ class Users extends Controller
     public $requiredPermissions = ['winter.users.access_users'];
 
     /**
-     * @var string formL
+     * @var string HTML body tag class
      */
     public $bodyClass = 'compact-container';
 
