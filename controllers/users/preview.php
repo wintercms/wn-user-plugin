@@ -26,11 +26,9 @@
             </div>
         </div>
 
-        <div class="layout">
-            <div class="layout-row">
-                <?= $this->formRenderOutsideFields() ?>
-                <?= $this->formRenderPrimaryTabs() ?>
-            </div>
+        <div class="layout-row">
+            <?= $this->formRenderOutsideFields() ?>
+            <?= $this->formRenderPrimaryTabs() ?>
         </div>
     <?php Block::endPut() ?>
 
