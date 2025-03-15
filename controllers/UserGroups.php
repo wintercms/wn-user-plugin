@@ -19,32 +19,7 @@ class UserGroups extends Controller
     ];
 
     /**
-     * @var array `FormController` configuration.
-     */
-    public $formConfig = 'config_form.yaml';
-
-    /**
-     * @var array `ListController` configuration.
-     */
-    public $listConfig = 'config_list.yaml';
-
-    /**
-     * @var array `RelationController` configuration, by extension.
-     */
-    public $relationConfig;
-
-    /**
      * @var array Permissions required to view this page.
      */
     public $requiredPermissions = ['winter.users.access_groups'];
-
-    /**
-     * Constructor.
-     */
-    public function __construct()
-    {
-        parent::__construct();
-
-        BackendMenu::setContext('Winter.User', 'user', 'usergroups');
-    }
 }
