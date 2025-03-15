@@ -3,9 +3,7 @@
 <?php Block::endPut() ?>
 
 <?php if (!$this->fatalError): ?>
-
     <?php Block::put('form-contents') ?>
-
         <?php if ($formModel->is_guest): ?>
             <?= $this->makePartial('hint_guest') ?>
         <?php elseif ($formModel->isBanned()): ?>
