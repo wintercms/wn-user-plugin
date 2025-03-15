@@ -1,8 +1,5 @@
 <?php Block::put('breadcrumb') ?>
-    <ul>
-        <li><a href="<?= Backend::url('winter/user/users') ?>"><?= e(trans('winter.user::lang.users.menu_label')) ?></a></li>
-        <li><?= e(trans($this->pageTitle)) ?></li>
-    </ul>
+    <?= $this->makeLayoutPartial('breadcrumb') ?>
 <?php Block::endPut() ?>
 
 <?php if (!$this->fatalError): ?>
@@ -31,14 +28,12 @@
             </div>
         </div>
 
-        <div class="layout-row min-size">
-            <?= $this->formRender(['preview' => true, 'section' => 'outside']) ?>
+        <div class="layout">
+            <div class="layout-row">
+                <?= $this->formRenderOutsideFields() ?>
+                <?= $this->formRenderPrimaryTabs() ?>
+            </div>
         </div>
-
-        <div class="layout-row">
-            <?= $this->formRender(['preview' => true, 'section' => 'primary']) ?>
-        </div>
-
     <?php Block::endPut() ?>
 
     <?php Block::put('form-sidebar') ?>
