@@ -5,10 +5,7 @@ use Lang;
 use Flash;
 use Response;
 use Redirect;
-use BackendMenu;
-use BackendAuth;
 use Backend\Classes\Controller;
-use System\Classes\SettingsManager;
 use Winter\User\Models\User;
 use Winter\User\Models\UserGroup;
 use Winter\User\Models\MailBlocker;
@@ -25,40 +22,16 @@ class Users extends Controller
     ];
 
     /**
-     * @var array `FormController` configuration.
-     */
-    public $formConfig = 'config_form.yaml';
-
-    /**
-     * @var array `ListController` configuration.
-     */
-    public $listConfig = 'config_list.yaml';
-
-    /**
-     * @var array `RelationController` configuration, by extension.
-     */
-    public $relationConfig;
-
-    /**
      * @var array Permissions required to view this page.
      */
     public $requiredPermissions = ['winter.users.access_users'];
 
     /**
-     * @var string HTML body tag class
+     * @var string formL
      */
     public $bodyClass = 'compact-container';
 
-    /**
-     * Constructor.
-     */
-    public function __construct()
-    {
-        parent::__construct();
-
-        BackendMenu::setContext('Winter.User', 'user', 'users');
-        SettingsManager::setContext('Winter.User', 'settings');
-    }
+    public $formLayout = 'sidebar';
 
     public function index()
     {
