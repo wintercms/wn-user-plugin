@@ -1,14 +1,9 @@
 <?php Block::put('breadcrumb') ?>
-    <ul>
-        <li><a href="<?= Backend::url('winter/user/users') ?>"><?= e(trans('winter.user::lang.users.menu_label')) ?></a></li>
-        <li><?= e(trans($this->pageTitle)) ?></li>
-    </ul>
+    <?= $this->makeLayoutPartial('breadcrumb') ?>
 <?php Block::endPut() ?>
 
 <?php if (!$this->fatalError): ?>
-
     <?php Block::put('form-contents') ?>
-
         <?php if ($formModel->is_guest): ?>
             <?= $this->makePartial('hint_guest') ?>
         <?php elseif ($formModel->isBanned()): ?>
@@ -31,14 +26,10 @@
             </div>
         </div>
 
-        <div class="layout-row min-size">
-            <?= $this->formRender(['preview' => true, 'section' => 'outside']) ?>
-        </div>
-
         <div class="layout-row">
-            <?= $this->formRender(['preview' => true, 'section' => 'primary']) ?>
+            <?= $this->formRenderOutsideFields() ?>
+            <?= $this->formRenderPrimaryTabs() ?>
         </div>
-
     <?php Block::endPut() ?>
 
     <?php Block::put('form-sidebar') ?>
