@@ -22,6 +22,21 @@ class Users extends Controller
     ];
 
     /**
+     * @var array `FormController` configuration.
+     */
+    public $formConfig = 'config_form.yaml';
+
+    /**
+     * @var array `ListController` configuration.
+     */
+    public $listConfig = 'config_list.yaml';
+
+    /**
+     * @var array `RelationController` configuration, by extension.
+     */
+    public $relationConfig;
+
+    /**
      * @var array Permissions required to view this page.
      */
     public $requiredPermissions = ['winter.users.access_users'];
