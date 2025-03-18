@@ -1,5 +1,5 @@
 {% if canRegister %}
-    <h3>{{ 'winter.user::frontend.register.title' | trans }}</h3>
+    <h3>{{ 'winter.user::frontend.general.register' | trans }}</h3>
 
     {{ form_ajax('onRegister') }}
 
@@ -46,7 +46,7 @@
                 autocomplete="new-password"/>
         </div>
 
-        <button type="submit" class="btn btn-default">{{ 'winter.user::frontend.register.button' | trans }}</button>
+        <button type="submit" class="btn btn-default">{{ 'winter.user::frontend.general.register' | trans }}</button>
 
     {{ form_close() }}
 {% else %}

@@ -1,9 +1,9 @@
 {% if not user.is_activated %}
 
-    <h3>{{ 'winter.user::frontend.activate.title' | trans }}</h3>
+    <h3>{{ 'winter.user::frontend.email_not_verified.title' | trans }}</h3>
     <p>
-        {{ 'winter.user::frontend.activate.infos' | trans }}
-        <a href="javascript:;" data-request="onSendActivationEmail">{{ 'winter.user::frontend.activate.link' | trans }}</a>.
+        {{ 'winter.user::frontend.email_not_verified.description' | trans }}
+        <a href="javascript:;" data-request="onSendActivationEmail">{{ 'winter.user::frontend.resend_verification_email' | trans }}</a>.
     </p>
 
 {% endif %}

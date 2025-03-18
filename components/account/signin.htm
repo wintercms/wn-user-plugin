@@ -1,4 +1,4 @@
-<h3>{{ 'winter.user::frontend.signin.title' | trans }}</h3>
+<h3>{{ 'winter.user::frontend.general.signin' | trans }}</h3>
 
 {{ form_ajax('onSignin') }}
     <div class="form-group">
@@ -8,7 +8,7 @@
             type="text"
             class="form-control"
             id="userSigninLogin"
-            placeholder="{{ 'winter.user::frontend.general.enter_placeholder' | trans({attribute: loginAttributeLabel | lower}) }}"
+            placeholder="{{ 'winter.user::frontend.general.login_placeholder' | trans({attribute: loginAttributeLabel | lower}) }}"
             autocomplete="username"/>
     </div>
 
@@ -26,11 +26,11 @@
     {% if rememberLoginMode == 'ask' %}
     <div class="form-group">
         <div class="checkbox">
-        <label><input name="remember" type="checkbox" value="1"> {{ 'winter.user::frontend.signin.remember' | trans }}</label>
+        <label><input name="remember" type="checkbox" value="1"> {{ 'winter.user::frontend.general.remember' | trans }}</label>
         </div>
     </div>
     {% endif %}
 
-    <button type="submit" class="btn btn-default">{{ 'winter.user::frontend.signin.button' | trans }}</button>
+    <button type="submit" class="btn btn-default">{{ 'winter.user::frontend.general.signin' | trans }}</button>
 
 {{ form_close() }}

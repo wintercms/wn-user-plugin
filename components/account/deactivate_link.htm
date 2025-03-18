@@ -10,26 +10,26 @@ function toggleAccountDeactivateForm() {
     onclick="toggleAccountDeactivateForm()"
     class="deactivate"
 >
-    {{ 'winter.user::frontend.deactivate.link' | trans }}
+    {{ 'winter.user::frontend.deactivate_account.title' | trans }}
 </a>
 
 <div id="accountDeactivateForm" style="display: none">
     {{ form_ajax('onDeactivate') }}
-        <h3>{{ 'winter.user::frontend.deactivate.title' | trans }}</h3>
+        <h3>{{ 'winter.user::frontend.deactivate_account.prompt' | trans }}</h3>
         <p>
-            {{ 'winter.user::frontend.deactivate.infos' | trans }}
+            {{ 'winter.user::frontend.deactivate_account.description' | trans }}
         </p>
         <div class="form-group">
-            <label for="accountDeletePassword">{{ 'winter.user::frontend.deactivate.enter_password' | trans }}</label>
+            <label for="accountDeletePassword">{{ 'winter.user::frontend.continue_with_password' | trans }}</label>
             <input name="password" type="password" class="form-control" id="accountDeletePassword" />
         </div>
         <button type="submit" class="btn btn-danger">
-            {{ 'winter.user::frontend.deactivate.button' | trans }}
+            {{ 'winter.user::frontend.confirm' | trans }}
         </button>
         <a
             href="javascript:;"
             onclick="toggleAccountDeactivateForm()">
-            {{ 'winter.user::frontend.deactivate.mind_changed' | trans }}
+            {{ 'winter.user::frontend.deactivate_account.cancel' | trans }}
         </a>
     {{ form_close() }}
 </div>
