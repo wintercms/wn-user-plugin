@@ -1,7 +1,6 @@
 <?php
 
 return [
-    'confirm' => 'Confirmer la désactivation du compte',
     'continue_with_password' => 'Pour continuer, veuillez saisir votre mot de passe actuel :',
     'password_required_update' => 'Pour modifier ces données, veuillez confirmer votre mot de passe actuel.',
     'resend_verification_email' => 'Renvoyer l\'e-mail de vérification',
@@ -33,6 +32,7 @@ return [
     ],
     'deactivate_account' => [
         'cancel' => 'J\'ai changé d\'avis',
+        'confirm' => 'Confirmer la désactivation du compte',
         'description' => 'Votre compte sera désactivé et vos données seront supprimées du site. Vous pouvez réactiver votre compte à tout moment en vous reconnectant.',
         'prompt' => 'Désactiver votre compte ?',
         'title' => 'Désactiver le compte',

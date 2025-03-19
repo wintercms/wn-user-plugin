@@ -1,7 +1,6 @@
 <?php
 
 return [
-    'confirm' => 'Confirm Deactivate Account',
     'continue_with_password' => 'To continue, please enter your password:',
     'password_required_update' => 'To change these details, please confirm your current password.',
     'resend_verification_email' => 'Send the verification email again',
@@ -33,6 +32,7 @@ return [
     ],
     'deactivate_account' => [
         'cancel' => 'I changed my mind',
+        'confirm' => 'Confirm Deactivate Account',
         'description' => 'Your account will be disabled and your details removed from the site. You can reactivate your account any time by signing back in.',
         'prompt' => 'Deactivate your account?',
         'title' => 'Deactivate account',
