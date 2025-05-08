@@ -22,34 +22,16 @@ jobs:
             phpVersion: '7.4'
             winterBranch: '1.1'
       fail-fast: false
-
     name: PHP ${{ matrix.phpVersion }} / Winter ${{ matrix.winterBranch }}
     runs-on: ${{ matrix.operatingSystem }}
-
-    env:
-      extensions: curl, fileinfo, gd, mbstring, openssl, pdo, pdo_sqlite, sqlite3, xml, zip
-
     steps:
-      - name: Checkout Winter CMS
-        uses: actions/checkout@v4
-        with:
-          repository: wintercms/winter
-          ref: ${{ matrix.winterBranch }}
-
-      - name: Checkout changes
-        uses: actions/checkout@v2
-        with:
-          path: plugins/winter/user
-
-      - name: Install PHP
-        uses: shivammathur/setup-php@v2
+      - name: Setup Winter
+        uses: wintercms/setup-winter-action@v1
         with:
           php-version: ${{ matrix.phpVersion }}
-          tools: composer:v2
-          extensions: ${{ env.extensions }}
-
-      - name: Install Composer dependencies
-        run: composer install --no-interaction --no-progress --no-scripts
+          winter-ref: ${{ matrix.winterBranch }}
+          plugin-author: winter
+          plugin-name: user
 
       - name: Run linting
         run: ./vendor/bin/parallel-lint plugins/winter/user
