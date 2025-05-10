@@ -22,13 +22,8 @@ jobs:
             phpVersion: '7.4'
             winterBranch: '1.1'
       fail-fast: false
-
     name: PHP ${{ matrix.phpVersion }} / Winter ${{ matrix.winterBranch }}
     runs-on: ${{ matrix.operatingSystem }}
-
-    env:
-      extensions: curl, fileinfo, gd, mbstring, openssl, pdo, pdo_sqlite, sqlite3, xml, zip
-
     steps:
       - name: Setup Winter
         uses: wintercms/setup-winter-action@v1
