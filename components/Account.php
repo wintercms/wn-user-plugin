@@ -205,6 +205,9 @@ class Account extends ComponentBase
             $messages['login'] = $this->loginAttribute() == UserSettings::LOGIN_USERNAME
                 ? trans('winter.user::lang.account.invalid_username')
                 : trans('winter.user::lang.account.invalid_email');
+            $messages['login.required'] = $this->loginAttribute() == UserSettings::LOGIN_USERNAME
+                ? trans('winter.user::lang.account.required_username')
+                : trans('winter.user::lang.account.required_email');
 
             if (!array_key_exists('login', $data)) {
                 $data['login'] = post('username', post('email'));

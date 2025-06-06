@@ -180,6 +180,8 @@ return [
         'invalid_current_pass' => 'The current password you entered was invalid.',
         'invalid_username' => 'The username you have entered is invalid.',
         'invalid_email' => 'The email address you have entered is invalid.',
+        'required_username' => 'The username field is required.',
+        'required_email' => 'The email address field is required.',
         'success_activation' => 'Successfully activated your account.',
         'success_deactivation' => 'Successfully deactivated your account. Sorry to see you go!',
         'success_saved' => 'Settings successfully saved!',
