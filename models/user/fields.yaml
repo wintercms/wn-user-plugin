@@ -4,6 +4,21 @@
 
 fields:
 
+    _status:
+        type: partial
+        path: preview_status
+        context: preview
+
+    _scoreboard:
+        type: partial
+        path: preview_scoreboard
+        context: preview
+
+    _preview_toolbar:
+        type: partial
+        path: preview_toolbar
+        context: preview
+
     name:
         label: winter.user::lang.user.name
         span: auto
