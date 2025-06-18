@@ -7,4 +7,3 @@
         <?php elseif (!$formModel->is_activated): ?>
             <?= $this->makePartial('hint_activate') ?>
         <?php endif ?>
-
