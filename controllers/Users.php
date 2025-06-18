@@ -42,10 +42,8 @@ class Users extends Controller
     public $requiredPermissions = ['winter.users.access_users'];
 
     /**
-     * @var string HTML body tag class
+     * @var string The form layout to use. One of standard, sidebar, fancy
      */
-    public $bodyClass = 'compact-container';
-
     public $formLayout = 'sidebar';
 
     public function index()
