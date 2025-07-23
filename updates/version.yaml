@@ -85,3 +85,8 @@
 "2.2.0": "Add avatar removal. Password resets will activate users if User activation mode is enabled."
 "2.2.1": "Fixes a bug introduced by the adoption of symfony/mime required since Laravel 7.x where sending an email to a blocked email address would not be prevented."
 "2.2.2": "Improved French translation, updated plugin icons, fixed migrations for Laravel 9"
+"2.2.3":
+    - "Web middleware also required for route restriction"
+    - "Improve French translations"
+    - "Translate frontend components"
+    - "Add support for 'required' validation message"
