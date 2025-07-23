@@ -90,3 +90,4 @@
     - "Improve French translations"
     - "Translate frontend components"
     - "Add support for 'required' validation message"
+"2.3.0": "Make use of new default backend views available in Winter v1.2.8+"
