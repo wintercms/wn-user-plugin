@@ -5,10 +5,7 @@ use Lang;
 use Flash;
 use Response;
 use Redirect;
-use BackendMenu;
-use BackendAuth;
 use Backend\Classes\Controller;
-use System\Classes\SettingsManager;
 use Winter\User\Models\User;
 use Winter\User\Models\UserGroup;
 use Winter\User\Models\MailBlocker;
@@ -45,20 +42,9 @@ class Users extends Controller
     public $requiredPermissions = ['winter.users.access_users'];
 
     /**
-     * @var string HTML body tag class
+     * @var string The form layout to use. One of standard, sidebar, fancy
      */
-    public $bodyClass = 'compact-container';
-
-    /**
-     * Constructor.
-     */
-    public function __construct()
-    {
-        parent::__construct();
-
-        BackendMenu::setContext('Winter.User', 'user', 'users');
-        SettingsManager::setContext('Winter.User', 'settings');
-    }
+    public $formLayout = 'sidebar';
 
     public function index()
     {
