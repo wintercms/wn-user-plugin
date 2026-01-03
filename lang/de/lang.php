@@ -184,6 +184,8 @@ return [
     'invalid_deactivation_pass' => 'Das eingegebene Passwort war ungültig.',
     'invalid_username' => 'Der eingegebene Nutzername ist ungültig.',
     'invalid_email' => 'Die eingegebene E-Mail ist ungültig.',
+    'required_username' => 'Das Feld Benutzername ist erforderlich.',
+    'required_email' => 'Das Feld E-Mail-Adresse ist erforderlich.',
     'success_activation' => 'Benutzerkonto erfolgreich aktiviert.',
     'success_deactivation' => 'Konto erfolgreich deaktiviert. Schade, dass du gehst!',
     'success_saved' => 'Einstellungen erfolgreich gespeichert!',
