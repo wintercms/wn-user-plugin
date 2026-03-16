@@ -296,8 +296,22 @@ class Account extends ComponentBase
 
             $rules = (new UserModel)->rules;
 
-            if ($this->loginAttribute() !== UserSettings::LOGIN_USERNAME) {
-                unset($rules['username']);
+            switch ($this->loginAttribute()) {
+                case UserSettings::LOGIN_EMAIL:
+                    unset($rules['username']);
+
+                    $email = post('email');
+                    if (UserModel::where('email', $email)->where('is_guest', 1)->count()) {
+                        $rules['email'] = 'required|between:6,255|email';
+                    }
+                    break;
+                case UserSettings::LOGIN_USERNAME:
+                    unset($rules['email']);
+                    $username = post('username');
+                    if (UserModel::where('username', $username)->where('is_guest', 1)->count()) {
+                        $rules['username'] = 'required|between:6,255|username';
+                    }
+                    break;
             }
 
             $validation = Validator::make($data, $rules);
