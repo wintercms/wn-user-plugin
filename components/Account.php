@@ -299,15 +299,15 @@ class Account extends ComponentBase
             switch ($this->loginAttribute()) {
                 case UserSettings::LOGIN_EMAIL:
                     unset($rules['username']);
-                    $email = post('email');
-                    if (UserModel::where('email', $email)->where('is_guest', 1)->count()) {
+                    $user = UserModel::findByEmail(post('email'));
+                    if ($user && $user->is_guest) {
                         $rules['email'] = 'required|between:6,255|email';
                     }
                     break;
                 case UserSettings::LOGIN_USERNAME:
                     unset($rules['email']);
-                    $username = post('username');
-                    if (UserModel::where('username', $username)->where('is_guest', 1)->count()) {
+                    $user = UserModel::findByUsername(post('username'));
+                    if ($user && $user->is_guest) {
                         $rules['username'] = 'required|between:6,255';
                     }
                     break;
