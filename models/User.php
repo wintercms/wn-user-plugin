@@ -171,6 +171,19 @@ class User extends UserBase
         return self::where('email', $email)->first();
     }
 
+    /**
+     * Looks up a user by their username.
+     * @return self
+     */
+    public static function findByUsername($username)
+    {
+        if (!$username) {
+            return;
+        }
+
+        return self::where('username', $username)->first();
+    }
+
     //
     // Getters
     //
