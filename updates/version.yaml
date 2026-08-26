@@ -91,3 +91,9 @@
     - "Translate frontend components"
     - "Add support for 'required' validation message"
 "2.3.0": "Make use of new default backend views available in Winter v1.2.8+"
+"2.3.1":
+    - "Adjusted the registration validation rules so an existing guest account can be registered against, and dropped the unused email rules when signing in by username."
+    - "Added a User::findByUsername() helper to the user model."
+    - "Added the missing German translations for the required username and email validation messages."
+    - "Widened the winter/wn-backend-module requirement from ~1.2.8 to ^1.2.8."
+"2.3.2": "Record the 2.3.1 changelog entry, which was missed when v2.3.1 was tagged and released."
