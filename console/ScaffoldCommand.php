@@ -278,7 +278,10 @@ class ScaffoldCommand extends Command
         $user = new User();
         $user->name = $name;
         $user->surname = $surname;
-        $user->username = $handle;
+        // Namespace the username with a scaffold marker so generated accounts
+        // cannot collide with a pre-existing (non-scaffold) user's username,
+        // which would otherwise abort the run (and survive --fresh cleanup).
+        $user->username = 'scaffold-' . $handle;
         $user->email = $email;
         $user->password = 'scaffold-password';
         $user->password_confirmation = 'scaffold-password';
