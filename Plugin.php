@@ -8,6 +8,7 @@ use System\Classes\PluginBase;
 use System\Classes\SettingsManager;
 use Illuminate\Foundation\AliasLoader;
 use Winter\User\Classes\UserRedirector;
+use Winter\User\Console\ScaffoldCommand;
 use Winter\User\Models\MailBlocker;
 use Winter\Notify\Classes\Notifier;
 
@@ -65,6 +66,11 @@ class Plugin extends PluginBase
          * Compatability with Winter.Notify
          */
         $this->bindNotificationEvents();
+
+        /*
+         * Register the dev-only demo data scaffolder.
+         */
+        $this->registerConsoleCommand('winter.user.scaffold', ScaffoldCommand::class);
     }
 
     public function registerComponents()
