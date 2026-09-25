@@ -28,7 +28,8 @@
         "source": "https://github.com/wintercms/wn-user-plugin"
     },
     "require": {
-        "winter/wn-backend-module": "^1.2.8 || dev-develop",
+        "php": ">=8.1",
+        "winter/wn-backend-module": "^1.2.8|dev-develop",
         "composer/installers": "~1.0"
     },
     "replace": {
