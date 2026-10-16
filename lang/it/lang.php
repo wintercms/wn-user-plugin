@@ -28,6 +28,7 @@ return [
         'convert_guest_confirm' => 'Convertire questo utente anonimo a un utente registrato?',
         'convert_guest_manually' => 'Converti a un utente registrato',
         'convert_guest_success' => 'Utente convertito a un account registrato',
+        'impersonate_confirm' => 'Vuoi impersonare questo utente? Puoi annullare l\'impersonazione effettuando il logout.',
         'delete_confirm' => 'Vuoi veramente cancellare questo utente?',
         'unban_user' => 'Sblocca questo utente',
         'unban_confirm' => 'Vuoi veramente sbloccare questo utente?',
@@ -168,7 +169,8 @@ return [
         'password' => 'Password',
         'login' => 'Login',
         'new_password' => 'Nuova Password',
-        'new_password_confirm' => 'Conferma Nuova Password'
+        'new_password_confirm' => 'Conferma Nuova Password',
+        'update_requires_password_comment' => 'Richiedi la password attuale dell\'utente quando l\'utente modifica il suo profilo.'
     ],
     'reset_password' => [
         'reset_password' => 'Ripristina Password',
