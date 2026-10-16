@@ -7,7 +7,8 @@ return [
         'tab' => 'Utenti',
         'access_users' => 'Gestisci Utenti',
         'access_groups' => 'Gestisci Gruppi di Utenti',
-        'access_settings' => 'Gestisci Impostazioni Utenti'
+        'access_settings' => 'Gestisci Impostazioni Utenti',
+        'impersonate_user' => 'Impersona utenti'
     ],
     'users' => [
         'menu_label' => 'Utenti',
@@ -15,7 +16,7 @@ return [
         'new_user' => 'Nuovo Utente',
         'list_title' => 'Gestisci Utenti',
         'trashed_hint_title' => 'L\'utente ha disabilitato il suo account',
-        'trashed_hint_desc' => 'Questo utente ha disattivato il suo account and e non vuole più apparire sul sito. Possono riattivarsi in qualsiasi momento effettuando l\'accesso.',
+        'trashed_hint_desc' => 'Questo utente ha disattivato il suo account e non vuole più apparire sul sito. Possono riattivarsi in qualsiasi momento effettuando l\'accesso.',
         'banned_hint_title' => 'Questo utente è stato bannato',
         'banned_hint_desc' => 'Questo utente è stato bannato da un amministratore e non potrà piú effettuare l\'accesso',
         'guest_hint_title' => 'Questo è un utente anonimo',
@@ -28,6 +29,9 @@ return [
         'convert_guest_confirm' => 'Convertire questo utente anonimo a un utente registrato?',
         'convert_guest_manually' => 'Converti a un utente registrato',
         'convert_guest_success' => 'Utente convertito a un account registrato',
+        'impersonate_user' => 'Impersona utente',
+        'impersonate_confirm' => 'Vuoi impersonare questo utente? Puoi annullare l'impersonazione effettuando il logout.',
+        'impersonate_success' => 'Stai impersonando questo utente',
         'delete_confirm' => 'Vuoi veramente cancellare questo utente?',
         'unban_user' => 'Sblocca questo utente',
         'unban_confirm' => 'Vuoi veramente sbloccare questo utente?',
@@ -39,6 +43,10 @@ return [
         'delete_selected_confirm' => 'Eliminare gli utenti selezionati?',
         'delete_selected_empty' => 'Non ci sono utenti selezionati da cancellare.',
         'delete_selected_success' => 'Gli utenti selezionati sono stati cancellati con successo.',
+        'activate_selected' => 'Attiva selezionati',
+        'activate_selected_confirm' => 'Attivare gli utenti selezionati?',
+        'activate_selected_empty' => 'Non ci sono utenti selezionati da attivare.',
+        'activate_selected_success' => 'Utenti selezionati attivati con successo.',
         'deactivate_selected' => 'Disabilita selezionati',
         'deactivate_selected_confirm' => 'Disattivare gli utenti selezionati?',
         'deactivate_selected_empty' => 'Non ci sono utenti selezionati da disattivare.',
@@ -55,6 +63,9 @@ return [
         'unban_selected_confirm' => 'Sbloccare gli utenti selezionati?',
         'unban_selected_empty' => 'Non ci sono utenti selezionati da sbloccare.',
         'unban_selected_success' => 'Utenti selezionati sbloccati con successo.',
+        'unsuspend' => 'Annulla sospensione',
+        'unsuspend_success' => 'La sospensione dell\'utente è stata annullata.',
+        'unsuspend_confirm' => 'Vuoi veramente annullare la sospensione di questo utente?'
     ],
     'settings' => [
         'users' => 'Utenti',
@@ -63,6 +74,7 @@ return [
         'activation_tab' => 'Attivazione',
         'signin_tab' => 'Accesso',
         'registration_tab' => 'Registrazione',
+        'profile_tab' => 'Profilo',
         'notifications_tab' => 'Notifiche',
         'allow_registration' => 'Consenti registrazione utenti',
         'allow_registration_comment' => 'Se questo è disabilitato gli utenti possono essere creati solo da un amministratore.',
@@ -80,13 +92,20 @@ return [
         'block_persistence_comment' => 'Quando abilitato gli utenti non possono effettuare il log-in da diversi dispositivi contemporaneamente',
         'use_throttle' => 'Limita tentativi',
         'use_throttle_comment' => 'Ripetuti tentativi errati di accesso porteranno alla sospensione temporanea dell\'utente.',
+        'use_register_throttle' => 'Limita registrazioni',
+        'use_register_throttle_comment' => 'Previene registrazioni multiple dallo stesso IP in rapida successione.',
         'login_attribute' => 'Metodo di login',
         'login_attribute_comment' => 'Seleziona che attributo gli utenti useranno per effettuare il login.' ,
+        'remember_login' => 'Modalità di ricordo dell\'accesso',
+        'remember_login_comment' => 'Seleziona se la sessione dell\'utente deve essere persistente.',
+        'remember_always' => 'Sempre',
+        'remember_never' => 'Mai',
+        'remember_ask' => 'Chiedi all\'utente al momento dell\'accesso',
     ],
     'user' => [
         'label' => 'Utente',
         'id' => 'ID',
-        'username' => 'Username',
+        'username' => 'Nome utente',
         'name' => 'Nome',
         'name_empty' => 'Anonimo',
         'surname' => 'Cognome',
@@ -94,7 +113,7 @@ return [
         'created_at' => 'Registrato',
         'last_seen' => 'Ultimo accesso',
         'is_guest' => 'Anonimo',
-        'joined' => 'Joined',
+        'joined' => 'Data di registrazione',
         'is_online' => 'Online adesso',
         'is_offline' => 'Al momento non collegato',
         'send_invite' => 'Invia invito via mail',
@@ -114,6 +133,8 @@ return [
         'status_guest' => 'Anonimo',
         'status_activated' => 'Attivato',
         'status_registered' => 'Registrato',
+        'created_ip_address' => 'Indirizzo IP di creazione',
+        'last_ip_address' => 'Ultimo indirizzo IP',
     ],
     'group' => [
         'label' => 'Gruppo',
@@ -142,17 +163,25 @@ return [
     ],
     'login' => [
         'attribute_email' => 'Email',
-        'attribute_username' => 'Username'
+        'attribute_username' => 'Nome utente'
     ],
     'account' => [
         'account' => 'Account',
         'account_desc' => 'Form di gestione account.',
+        'banned' => 'Spiacenti, questo utente non è ancora attivo. Contattaci per ulteriori assistenze.',
         'redirect_to' => 'Reindirizza A',
         'redirect_to_desc' => 'Pagina verso cui essere reindirizzati dopo modifica, accesso o registrazione.',
         'code_param' => 'Parametro codice di attivazione',
         'code_param_desc' => 'Parametro dell\'URL usato per il codice di attivazione',
+        'force_secure' => 'Forza il protocollo sicuro',
+        'force_secure_desc' => 'Reindirizza sempre l\'URL con lo schema HTTPS.',
         'invalid_activation_code' => 'Codice di attivazione fornito non valido.',
         'invalid_deactivation_pass' => 'La password inserita non è valida.',
+        'invalid_current_pass' => 'La password attuale inserita non è valida.',
+        'invalid_username' => 'Il nome utente inserito non è valido.',
+        'invalid_email' => 'L\'indirizzo email inserito non è valido.',
+        'required_username' => 'Il campo nome utente è obbligatorio.',
+        'required_email' => 'Il campo indirizzo email è obbligatorio.',
         'success_activation' => 'Account attivato con successo.',
         'success_deactivation' => 'Account disattivato con successo. Ci dispiace vederti andare via!',
         'success_saved' => 'Impostazioni salvate con successo!',
@@ -161,6 +190,7 @@ return [
         'activation_email_sent' => 'Una mail di attivazione è stata inviata al tuo indirizzo mail.',
         'activation_by_admin' => 'Registrazione effettuata con successo. Il tuo account non è ancora attivo e deve essere approvato da un amministratore.',
         'registration_disabled' => 'La registrazione è al momento disattivata.',
+        'registration_throttled' => 'La registrazione è limitata. Riprova più tardi.',
         'sign_in' => 'Accedi',
         'register' => 'Registra',
         'full_name' => 'Nome Completo',
@@ -168,7 +198,11 @@ return [
         'password' => 'Password',
         'login' => 'Login',
         'new_password' => 'Nuova Password',
-        'new_password_confirm' => 'Conferma Nuova Password'
+        'new_password_confirm' => 'Conferma Nuova Password',
+        'update_requires_password' => 'Conferma la password durante l\'aggiornamento',
+        'update_requires_password_comment' => 'Richiedi la password attuale dell\'utente quando l'utente modifica il suo profilo.',
+        'no_avatar' => 'Il tuo account non ha un avatar da rimuovere.',
+        'avatar_removed' => 'Il tuo avatar è stato rimosso con successo.'
     ],
     'reset_password' => [
         'reset_password' => 'Ripristina Password',
@@ -184,8 +218,11 @@ return [
         'all' => 'Tutti',
         'users' => 'Utenti',
         'guests' => 'Anonimi',
+        'allowed_groups_title' => 'Consenti gruppi',
+        'allowed_groups_description' => 'Scegli i gruppi consentiti o nessuno per consentire tutti i gruppi',
         'redirect_title' => 'Reindirizza a',
         'redirect_desc' => 'Nome della pagina a cui reindirizzare se l\'accesso è negato.',
-        'logout' => 'Sei stato scollegato con successo!'
+        'logout' => 'Sei stato scollegato con successo!',
+        'stop_impersonate_success' => 'Non stai più impersonando un utente.'
     ]
 ];
