@@ -381,7 +381,16 @@ class User extends UserBase
      */
     public function ban()
     {
-        Auth::findThrottleByUserId($this->id)->ban();
+        $throttles = $this->getThrottles();
+
+        // A record without an IP address covers the addresses that have no record yet
+        if (!$throttles->contains(fn ($throttle) => $throttle->ip_address === null)) {
+            $throttle = Auth::createThrottleModel();
+            $throttle->user_id = $this->id;
+            $throttles->push($throttle);
+        }
+
+        $throttles->each->ban();
     }
 
     /**
@@ -390,7 +399,7 @@ class User extends UserBase
      */
     public function unban()
     {
-        Auth::findThrottleByUserId($this->id)->unban();
+        $this->getThrottles()->each->unban();
     }
 
     /**
@@ -399,8 +408,7 @@ class User extends UserBase
      */
     public function isBanned()
     {
-        $throttle = Auth::createThrottleModel()->where('user_id', $this->id)->first();
-        return $throttle ? $throttle->is_banned : false;
+        return $this->getThrottles()->contains(fn ($throttle) => $throttle->is_banned);
     }
 
     //
@@ -413,7 +421,8 @@ class User extends UserBase
      */
     public function isSuspended()
     {
-        return Auth::findThrottleByUserId($this->id)->checkSuspended();
+        // checkSuspended() also lifts an expired suspension, so every record is checked
+        return $this->getThrottles()->map->checkSuspended()->contains(true);
     }
 
     /**
@@ -422,7 +431,16 @@ class User extends UserBase
      */
     public function unsuspend()
     {
-        Auth::findThrottleByUserId($this->id)->unsuspend();
+        $this->getThrottles()->each->unsuspend();
+    }
+
+    /**
+     * Returns the throttle records of this user, one per IP address.
+     * @return \Winter\Storm\Database\Collection
+     */
+    protected function getThrottles()
+    {
+        return Auth::createThrottleModel()->where('user_id', $this->id)->get();
     }
 
     //
