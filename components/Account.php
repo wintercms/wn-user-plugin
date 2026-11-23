@@ -95,9 +95,10 @@ class Account extends ComponentBase
         }
 
         /*
-         * Activation code supplied
+         * Activation code supplied. Codes are "<user id>!<code>"; anything else in the
+         * parameter (e.g. another path segment on "/account/:code?") is no activation.
          */
-        if ($code = $this->activationCode()) {
+        if (($code = $this->activationCode()) && str_contains($code, '!')) {
             $this->onActivate($code);
         }
 
@@ -402,6 +403,14 @@ class Account extends ComponentBase
 
             if (!$user = Auth::findUserById($userId)) {
                 throw new ValidationException($errorFields);
+            }
+
+            /*
+             * The link was used before: opened twice, or prefetched by a mail scanner
+             */
+            if ($user->is_activated) {
+                Flash::success(Lang::get(/*Your account is already activated!*/'winter.user::lang.account.already_active'));
+                return;
             }
 
             if (!$user->attemptActivation($code)) {
